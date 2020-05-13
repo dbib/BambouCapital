@@ -1,35 +1,27 @@
-import React, { useState, useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { useOnClickOutside } from './hooks';
-import { GlobalStyles } from './global';
-import { theme } from './theme';
-import { Burger, Menu } from './components';
-import FocusLock from 'react-focus-lock';
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Nav from './components/NavBar/Nav';
+import Home from './components/Home/Home';
+import Footer from './components/Fotter/Footer';
+import Gallery from './components/Gallery/Gallery';
+import Design from './components/Design/Design';
+import './App.css';
 
 function App() {
-  const [open, setOpen] = useState(false);
-  const node = useRef();
-  const menuId = "main-menu";
-
-  useOnClickOutside(node, () => setOpen(false));
-
   return (
-    <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyles />
-        <div ref={node}>
-          <FocusLock disabled={!open}>
-            <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
-            <Menu open={open} setOpen={setOpen} id={menuId} />
-          </FocusLock>
-        </div>
-        <div>
-          <h1>Hello World from the main App components</h1>
-          
-        </div>
-        
-      </>
-    </ThemeProvider>
+    <Router>
+      <div className="App">
+        <Nav />
+        <Route exact path='/' render ={props => (
+          <React.Fragment>
+            <Home />
+          </React.Fragment>
+        )} />
+        <Route path="/gallery" component={Gallery} />
+        <Route path="/design" component={Design} />
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

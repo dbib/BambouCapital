@@ -1,0 +1,66 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './Nav.css';
+
+export default class Nav extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isActive: false
+        };
+    }
+
+    handleClick = () => {
+        if (!this.state.isActive) {
+            this.setState({isActive: true});
+            document.body.style.overflow = "hidden";
+            console.log(`the state was updated to ${this.state.isActive}`);
+        } else {
+            this.setState({isActive: false});
+            document.body.style.overflow = "visible";
+            console.log(`the state was updated to ${this.state.isActive}`);
+        }
+    }
+    render() {
+        let className = "menu-btn";
+        let navBarContClass = "nav-bar-container";
+        let navElmState = "nav-closed"
+        if (this.state.isActive) {
+            className += " open";
+            navBarContClass += " navopen";
+            navElmState = "";
+        }
+        return (
+            < div className = {navBarContClass}>
+                <div className = "nav-container">
+                    <div className="brand-name-container">
+                        <h3>
+                            <Link to="/" className="link name">Bambou_Cap</Link>
+                        </h3>
+                    </div>
+                    <div id="btn-container">
+                        <div className = {className} onClick={this.handleClick}>
+                            <div className = "menu-btn__burger"></div>
+                        </div>
+                    </div>
+                </div>         
+                <nav className={navElmState}>
+                    <ul>
+                        <li>
+                            <Link to="/" className="link" onClick={this.handleClick}>Accueil</Link>
+                        </li>
+                        <li>
+                            <Link to="/gallery" className="link" onClick={this.handleClick}>Galleries</Link>
+                        </li>
+                        <li>
+                            <Link to="/design" className="link" onClick={this.handleClick}>Design</Link>
+                        </li>
+                        <li>
+                            <Link to="/contact" className="link" onClick={this.handleClick}>Contact</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        )
+    }
+}

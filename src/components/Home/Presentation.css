@@ -1,0 +1,53 @@
+/*General*/
+.button {
+    padding: 10px 32px;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    display: inline-block;
+    margin: 10px 0px;
+    color: black;
+    background: rgb(182, 180, 180);
+}
+
+/*Mobile Style */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1em;
+}
+
+.presentaion-cont{
+    margin-top: 30px;
+}
+
+img {
+    width: 100%;
+}
+
+h2 {
+    margin: 10px 0px;
+}
+.welcome-img, .mission-img, .team-img{
+    grid-column: 1/9;
+    grid-row: 2;
+}
+
+.welcome-text, .mission-text,.team-txt{
+    grid-column: 1/9;
+    text-align: center;
+    margin-top: 20px;
+    padding: 0px 8px;
+}
+
+.welcome-text .button{
+    background: #918529;
+    padding: 18px 40px;
+    font-size: 18px;
+    color: #FFF;
+
+}
+
+
+
