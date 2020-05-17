@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import moise1 from '../../assets/moise1.jpeg';
-import francis1 from '../../assets/francis1.jpeg';
+import moise1 from '../../assets/moise2.jpeg';
+import francis1 from '../../assets/francis3.jpeg';
 import './Design.css';
 
 export default class Design extends Component {
@@ -19,9 +19,6 @@ export default class Design extends Component {
                         seul de toute la phase de creation et de lui livrer au final le produit finis qui
                         garde alors un cotee artisale ou l'ame de l'artiste comme dise le connaisseurs.
                     </p>
-                    <a href="/contact">Nous Contacter</a>
-                    <br />
-                    <a href="/gallery">Consulter notre gallerie</a>
                 </div>
                 <div className="designers grid">
                     <div className="designer1 designer-cont">
@@ -29,7 +26,7 @@ export default class Design extends Component {
                             <img src={moise1} alt="moise" />
                         </div>
                         <div className="designer-text-cont">
-                            <h1>Moise MBUSA</h1>
+                            <h2>Moise MBUSA</h2>
                             <h3>Concepteur</h3>
                             <p>
                                 Moise MBUSA travail le bois depuis son plus jeune age
@@ -45,7 +42,7 @@ export default class Design extends Component {
                             <img src={francis1} alt="Francis" />
                         </div>
                         <div className="designer-text-cont">
-                            <h1>Francis</h1>
+                            <h2>Francis</h2>
                             <h3>Chef d'atelier</h3>
                             <p>
                                 Il s'occupe du travail des tissus, de la peinture et 

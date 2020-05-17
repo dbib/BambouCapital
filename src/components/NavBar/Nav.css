@@ -32,7 +32,7 @@
 }
 
 
-#btn-container {
+.btn-container {
     background: #fff;
     display: flex;
     grid-column: 8/9;
@@ -118,6 +118,10 @@
 
 .nav-closed {
     display: none;
+}
+
+.btn-cont-active {
+    padding-right: 10px;
 }
 
 nav {

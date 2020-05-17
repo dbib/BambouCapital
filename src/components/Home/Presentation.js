@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Presentation.css';
-import mainimage1 from '../../assets/mainimage1.jpg';
+import mainimage3 from '../../assets/mainimg3.jpg';
 import missionimg from '../../assets/missionimg.jpeg';
 import teamprimg1 from '../../assets/teamprimg1.jpeg';
 
@@ -15,7 +15,7 @@ export default class Presentation extends Component {
                         <a href="/" className="button">DECOUVRIRE</a>
                     </div>
                     <div className="welcome-img">
-                        <img src={mainimage1} alt="Chaise en bambou"/>
+                        <img src={mainimage3} alt="Chaise en bambou"/>
                     </div> 
                 </div>
                 <div className="mission-cont grid">

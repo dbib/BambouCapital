@@ -10,6 +10,11 @@ export default class Nav extends Component {
         };
     }
 
+    handleClickBrandName = () => {
+        this.setState({isActive: false});
+        document.body.style.overflow = "visible";
+    }
+
     handleClick = () => {
         if (!this.state.isActive) {
             this.setState({isActive: true});
@@ -25,20 +30,22 @@ export default class Nav extends Component {
         let className = "menu-btn";
         let navBarContClass = "nav-bar-container";
         let navElmState = "nav-closed"
+        let navBtnCont = "btn-container"
         if (this.state.isActive) {
             className += " open";
             navBarContClass += " navopen";
             navElmState = "";
+            navBtnCont += " btn-cont-active"
         }
         return (
             < div className = {navBarContClass}>
                 <div className = "nav-container">
                     <div className="brand-name-container">
                         <h3>
-                            <Link to="/" className="link name">Bambou_Cap</Link>
+                            <Link to="/" className="link name" onClick={this.handleClickBrandName}>Bambou_Cap</Link>
                         </h3>
                     </div>
-                    <div id="btn-container">
+                    <div className={navBtnCont}>
                         <div className = {className} onClick={this.handleClick}>
                             <div className = "menu-btn__burger"></div>
                         </div>
@@ -54,9 +61,6 @@ export default class Nav extends Component {
                         </li>
                         <li>
                             <Link to="/design" className="link" onClick={this.handleClick}>Design</Link>
-                        </li>
-                        <li>
-                            <Link to="/contact" className="link" onClick={this.handleClick}>Contact</Link>
                         </li>
                     </ul>
                 </nav>

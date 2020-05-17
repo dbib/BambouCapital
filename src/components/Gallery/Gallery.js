@@ -1,11 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import GalleryItem from './GalleryItem';
+import PropTypes from 'prop-types';
 
 export default class Gallery extends Component {
     render() {
-        return (
-            <div>
-                <p>This is the Gallery page</p>
-            </div>
-        )
+        return this.props.articles.map((article) => (
+            <GalleryItem key={article.id} article = {article} />
+        ));
     }
+}
+
+
+// PropTypes
+Gallery.propTypes = {
+    articles: PropTypes.array.isRequired
 }

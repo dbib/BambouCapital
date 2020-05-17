@@ -11,7 +11,7 @@
 
 .designers{
     padding: 20px;
-    background: rgb(250, 248, 248);
+    background: #fff;
 }
 
 .designer-cont{
@@ -19,17 +19,18 @@
     background: #fff;
     border-radius: 8px;
     margin: 20px 0px;
+    box-shadow: 3px 3px 10px 0px grey;
 }
 
 .designer-text-cont{
     padding: 15px;
 }
 
-.designer-text-cont h1, .designer-text-cont h3{
+.designer-text-cont h2, .designer-text-cont h3{
     margin-bottom: 8px;
 }
 
-.designer-text-cont h1{
+.designer-text-cont h2{
     font-weight: lighter;
     color: rgb(109, 109, 109);
 }
