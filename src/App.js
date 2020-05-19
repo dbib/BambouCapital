@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Footer from './components/Fotter/Footer';
 import Gallery from './components/Gallery/Gallery';
 import Design from './components/Design/Design';
+import CreateItem from './components/Gallery/CreateItem';
 import './App.css';
 
 export default class App extends Component {
@@ -46,6 +47,7 @@ export default class App extends Component {
             </React.Fragment>
           )} />
           <Route path="/design" component={Design} />
+          <Route path="/article/add" component={CreateItem} />
           <Footer />
         </div>
       </Router>

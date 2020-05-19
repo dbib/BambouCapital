@@ -62,6 +62,9 @@ export default class Nav extends Component {
                         <li>
                             <Link to="/design" className="link" onClick={this.handleClick}>Design</Link>
                         </li>
+                        <li>
+                            <Link to="/article/add" className="link" onClick={this.handleClick}>Form</Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

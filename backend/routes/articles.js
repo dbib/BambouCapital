@@ -48,17 +48,16 @@ router.route('/').get((req, res) => {
 
 //@route method POST
 //@description: adding a new product in our DB
-router.route('/add').post(upload.single("uploaded_file"), function (req, res) {
-    const article_name = req.body.article_name;
+router.route('/add').post((req, res) => {
+    const itemName = req.body.itemName;
     const description = req.body.description;
     const date = Date.parse(req.body.date);
-    const article_img = req.file.path;
-
+    //const article_img = req.body.path;
     const newArticle = new Article({
-        article_name,
+        itemName,
         description,
         date,
-        article_img
+        //article_img
     });
 
     newArticle.save()
@@ -88,7 +87,7 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post(upload.single("uploaded_file"), function (req, res) {
     Article.findById(req.params.id)
         .then( article => {
-            article.article_name = req.body.article_name;
+            article.article_name = req.body.itemName;
             article.description = req.body.description;
             article.date = Date.parse(req.body.date);
             article.article_img = req.file.path;
