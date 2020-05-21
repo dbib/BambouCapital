@@ -19,11 +19,9 @@ export default class Nav extends Component {
         if (!this.state.isActive) {
             this.setState({isActive: true});
             document.body.style.overflow = "hidden";
-            console.log(`the state was updated to ${this.state.isActive}`);
         } else {
             this.setState({isActive: false});
             document.body.style.overflow = "visible";
-            console.log(`the state was updated to ${this.state.isActive}`);
         }
     }
     render() {

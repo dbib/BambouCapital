@@ -39,9 +39,6 @@ export default class CreateItem extends Component {
             date: this.state.date
         }
         
-        //logging our datas
-        console.log(Item);
-
         //sending data to our backend
         axios.post('http://localhost:5000/articles/add', Item)
            .then(res => console.log(res.data));

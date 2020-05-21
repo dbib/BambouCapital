@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export default class Gallery extends Component {
     render() {
         return this.props.articles.map((article) => (
-            <GalleryItem key={article.id} article = {article} />
+            <GalleryItem key={article._id} article = {article} />
         ));
     }
 }

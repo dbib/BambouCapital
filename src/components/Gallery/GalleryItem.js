@@ -14,7 +14,7 @@ export class GalleryItem extends Component {
                 <div className='item-img-cont'>
                     <img src = {mainimage3} alt={this.props.article.name}/>
                 </div>
-                <h3 className='article-name'>{this.props.article.name}</h3>
+                <h3 className='article-name'>{this.props.article.itemName}</h3>
                 <p className='article-desc'>{this.props.article.description}</p>
             </div>
         )
@@ -23,7 +23,7 @@ export class GalleryItem extends Component {
 
 // PropTypes
 GalleryItem.propTypes = {
-    articles: PropTypes.object.isRequired
+    article: PropTypes.object.isRequired
 }
 
 export default GalleryItem

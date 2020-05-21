@@ -63,6 +63,8 @@ router.route('/add').post((req, res) => {
     newArticle.save()
         .then(() => res.json('Article added'))
         .catch(err => res.status(400).json('Error: ' +err));
+    
+    console.log(`A new article had been added to the database`);
 })
 
 

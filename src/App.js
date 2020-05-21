@@ -5,32 +5,28 @@ import Home from './components/Home/Home';
 import Footer from './components/Fotter/Footer';
 import Gallery from './components/Gallery/Gallery';
 import Design from './components/Design/Design';
-import CreateItem from './components/Gallery/CreateItem';
+import CreateItem from './components/Admin/CreateItem';
 import './App.css';
+import axios from 'axios';
 
 export default class App extends Component {
-  state = {
-    articles: [
-      {
-        id: 1,
-        name: 'Bambou 1',
-        description: 'Made in DRC',
-        materials: ['bambou', 'colle', 'cloue']
-      },
-      {
-        id: 2,
-        name: 'Bambou 2',
-        description: 'Made in DRC',
-        materials: ['bambou', 'colle', 'cloue']
-      },
-      {
-        id: 3,
-        name: 'Bambou 3',
-        description: 'Made in DRC',
-        materials: ['bambou', 'colle', 'cloue']
-      }
-    ]
+  constructor(props) {
+    super(props);
+
+    this.state = {articles: []}
   }
+
+  componentDidMount() {
+    axios.get('http://localhost:5000/articles/')
+      .then(response => {
+        this.setState({articles: response.data });
+      })
+      .catch( (error) => {
+        console.log(error);
+      })
+  }
+
+  
   render() {
     return (
       <Router>
