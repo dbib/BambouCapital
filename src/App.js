@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Nav from './components/NavBar/Nav';
 import Home from './components/Home/Home';
-import Footer from './components/Fotter/Footer';
+import Footer from './components/Footer/Footer';
 import Gallery from './components/Gallery/Gallery';
 import Design from './components/Design/Design';
 import CreateItem from './components/Admin/CreateItem';

@@ -19,14 +19,14 @@ const articleSchema = new Schema({
         required: true
     },
     //product picture
-    //itemImage: {
-      //  data: Buffer, 
-        //contentType: String
-    //}
+    itemImage: {
+        type: String,
+        required: true
+    }
 }, {
     timestamps: true,
 });
 
-const Article = mongoose.model('Article', articleSchema);
+const ArticleImg = mongoose.model('ArticleImg', articleSchema);
 
-module.exports = Article;
+module.exports = ArticleImg;

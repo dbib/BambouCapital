@@ -10,7 +10,7 @@ export default class CreateItem extends Component {
         this.state = {
             itemName: '',
             description: '',
-            //itemImage: React.createRef(),
+            itemImage: '',
             date: new Date()
         }
 
@@ -35,7 +35,7 @@ export default class CreateItem extends Component {
         const Item = {
             itemName: this.state.itemName,
             description: this.state.description,
-            //itemImage: this.state.itemImage.current.files[0],
+            itemImage: this.state.itemImage,
             date: this.state.date
         }
         
@@ -46,42 +46,66 @@ export default class CreateItem extends Component {
         this.setState({
             itemName: '',
             description: '',
-            //itemImage: React.createRef(),
+            itemImage: '',
             date: new Date()
         });
+    }
+
+    onChangeHandler = e => {
+        this.setState({
+            itemImage: e.target.files[0],
+            loaded: 0
+        })
+    }
+
+    onClickHandler = () => {
+        const data = new FormData();
+        data.append('file', this.state.itemImage);
+        axios.post("http://localhost:5000/articles/upload", data, {})
+            .then(res => {
+                console.log(res.statusText);
+            })
     }
 
     render() {
         return (
             <div>
-                <h3>Creer un nouveau article</h3>
-                <form onSubmit={this.onSubmit} encType="multipart/form-data" id='form-id'>
-                    <div className="form-group">
-                        <label>Nom de l'article:</label>
-                        <input type="text" 
-                                    name="articleName"
-                                    required
-                                    value={this.state.itemName}
-                                    onChange={this.onChangeItemName} 
-                        />
+                <div>
+                    <h3>Creer un nouveau article</h3>
+                    <form onSubmit={this.onSubmit} encType="multipart/form-data" id='form-id'>
+                        <div className="form-group">
+                            <label>Nom de l'article:</label>
+                            <input type="text" 
+                                        name="articleName"
+                                        required
+                                        value={this.state.itemName}
+                                        onChange={this.onChangeItemName} 
+                            />
+                        </div>
+                        <div className= "from-group">
+                            <label>Description:</label>
+                            <input type="text" 
+                                        name="articleDescription"
+                                        required
+                                        value={this.state.description}
+                                        onChange={this.onChangeDescription} 
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input type="submit"
+                                    value="create Article"
+                                    name="uploaded_file"
+                            />
+                        </div>
+                    </form>    
+                </div>
+                <div>
+                    <div className="form-group file">
+                        <label>Upload Your file</label>
+                        <input type="file" name="file" onChange = {this.onChangeHandler}/>
                     </div>
-                    <div className= "from-group">
-                        <label>Description:</label>
-                        <input type="text" 
-                                    name="articleDescription"
-                                    required
-                                    value={this.state.description}
-                                    onChange={this.onChangeDescription} 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input type="submit"
-                                value="create Article"
-                                name="uploaded_file"
-                        />
-                    </div>
-                </form>
-                
+                    <button type="button" onClick={this.onClickHandler}>Upload image</button>
+                </div>
             </div>
         )
     }
