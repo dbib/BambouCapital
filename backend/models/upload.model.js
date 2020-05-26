@@ -19,10 +19,34 @@ const articleSchema = new Schema({
         required: true
     },
     //product picture
-    itemImage: {
+    imagePath: {
         type: String,
         required: true
-    }
+    },
+    imageFieldname: {
+        type: String,
+        required: true
+    },
+    imageOriginalname: {
+        type: String,
+        required: true
+    },
+    imageEncoding: {
+        type: String,
+        required: true
+    },
+    imageMimetype: {
+        type: String,
+        required: true
+    },
+    imageFilename: {
+        type: String,
+        required: true
+    },
+    imageSize: {
+        type: String,
+        required: true
+    },
 }, {
     timestamps: true,
 });

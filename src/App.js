@@ -6,6 +6,8 @@ import Footer from './components/Footer/Footer';
 import Gallery from './components/Gallery/Gallery';
 import Design from './components/Design/Design';
 import CreateItem from './components/Admin/CreateItem';
+import AdminGallery from './components/Admin/AdminGallery';
+import EditItem from './components/Admin/EditItem';
 import './App.css';
 import axios from 'axios';
 
@@ -26,6 +28,16 @@ export default class App extends Component {
       })
   }
 
+  //Delete Item
+  deleteItem = (id) => {
+    axios.delete('http://localhost:5000/articles/'+id)
+      .then(res => console.log(res.data));
+    this.setState({
+      articles: this.state.articles.filter(el => el._id !== id)
+    })
+    console.log(`product deleted`)
+  }
+
   
   render() {
     return (
@@ -42,8 +54,14 @@ export default class App extends Component {
               <Gallery articles={this.state.articles} />
             </React.Fragment>
           )} />
+          <Route path="/admingallery" render ={props => (
+            <React.Fragment>
+              <AdminGallery articles={this.state.articles} deleteItem ={this.deleteItem} />
+            </React.Fragment>
+          )} />
           <Route path="/design" component={Design} />
           <Route path="/article/add" component={CreateItem} />
+          <Route path="/article/edit/:id" component={EditItem} />
           <Footer />
         </div>
       </Router>

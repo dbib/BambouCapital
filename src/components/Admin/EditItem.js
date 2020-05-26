@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import './CreateItem.css';
 
-export default class CreateItem extends Component {
+export default class EditItem extends Component {
     constructor(props) {
         super(props);
 
@@ -29,26 +29,20 @@ export default class CreateItem extends Component {
         });
     }
 
-    onSubmit = (e) => {
-        e.preventDefault();
-
-        const Item = {
-            itemName: this.state.itemName,
-            description: this.state.description,
-            //itemImage: this.state.itemImage,
-            date: this.state.date
-        }
-        
-        //sending data to our backend
-        axios.post('http://localhost:5000/articles/add', Item)
-           .then(res => console.log(res.data));
-
-        this.setState({
-            itemName: '',
-            description: '',
-            //itemImage: '',
-            date: new Date()
-        });
+    componentDidMount() {
+       axios.get('http://localhost:5000/articles/'+this.props.match.params.id)
+            .then(res => {
+                this.setState({
+                    itemName: res.data.itemName,
+                    description: res.data.description,
+                    itemImage: res.data.imagePath,
+                    date: new Date(res.data.date)
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            
     }
 
     onChangeHandler = e => {
@@ -58,22 +52,42 @@ export default class CreateItem extends Component {
         })
     }
 
-    onClickHandler = () => {
-        const data = new FormData();
-        data.append('file', this.state.itemImage);
-        axios.post("http://localhost:5000/articles/upload", data, {})
+    onSubmit = (e) => {
+        e.preventDefault();
+
+        const Item = {
+            itemName: this.state.itemName,
+            description: this.state.description,
+            date: this.state.date
+        }
+        
+        //sending data to our backend
+        axios.post('http://localhost:5000/articles/update/'+this.props.match.params.id, Item)
+           .then(res => console.log(res.data));
+
+        //sending image data
+        if (this.state.itemImage !== '') {
+            const data = new FormData();
+            data.append('file', this.state.itemImage);
+            axios.post("http://localhost:5000/articles/updateimage/"+this.props.match.params.id, data, {})
             .then(res => {
                 console.log(res.statusText);
             });
+        }
 
-        window.location = '/article/add';
-    }
+        this.setState({
+            itemName: '',
+            description: '',
+            itemImage: '',
+            date: new Date()
+        });
+    } 
 
     render() {
         return (
             <div>
                 <div>
-                    <h3>Creer un nouveau article</h3>
+                    <h3>Modifier l'article</h3>
                     <form onSubmit={this.onSubmit} encType="multipart/form-data" id='form-id'>
                         <div className="form-group">
                             <label>Nom de l'article:</label>
@@ -95,7 +109,7 @@ export default class CreateItem extends Component {
                         </div>
                         <div className="form-group">
                             <input type="submit"
-                                    value="create Article"
+                                    value="Modifier l'article"
                                     name="uploaded_file"
                             />
                         </div>

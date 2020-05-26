@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-//import mainimage3 from '../../assets/mainimg3.jpg';
-import './GalleryItem.css';
+import {Link} from 'react-router-dom';
+import './AdminGalleryItem.css';
 
-export class GalleryItem extends Component {
+export class AdminGalleryItem extends Component {
     readItem = (e) => {
         console.log(this.props);
     }
 
+    componentDidMount(){
+        console.log(this.props.article._id)
+    }
+
     render() {
+        const id = this.props.article._id;
+        const path = this.props.article.imagePath;
         return (
             <div className="article-cont" onClick={this.readItem}>
                 <div className='item-img-cont'>
@@ -16,14 +22,24 @@ export class GalleryItem extends Component {
                 </div>
                 <h3 className='article-name'>{this.props.article.itemName}</h3>
                 <p className='article-desc'>{this.props.article.description}</p>
+                <Link to={"/article/edit/"+this.props.article._id}>Modifier l'article</Link>
+                <button onClick={this.props.deleteItem.bind(this, id, path)} style={btnStyle}>Supprimer l'article</button>
+                
             </div>
         )
     }
 }
 
 // PropTypes
-GalleryItem.propTypes = {
+AdminGalleryItem.propTypes = {
     article: PropTypes.object.isRequired
 }
 
-export default GalleryItem
+const btnStyle ={
+    background: '#ff0000',
+    color: '#fff',
+    cursor: 'pointer',
+    padding: '5px 8px'
+}
+
+export default AdminGalleryItem
