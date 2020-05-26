@@ -22,7 +22,7 @@ export class AdminGalleryItem extends Component {
                 </div>
                 <h3 className='article-name'>{this.props.article.itemName}</h3>
                 <p className='article-desc'>{this.props.article.description}</p>
-                <Link to={"/article/edit/"+this.props.article._id}>Modifier l'article</Link>
+                <Link to={"/article/edit/"+this.props.article._id} style={editItemStyle}>Modifier l'article</Link>
                 <button onClick={this.props.deleteItem.bind(this, id, path)} style={btnStyle}>Supprimer l'article</button>
                 
             </div>
@@ -36,10 +36,26 @@ AdminGalleryItem.propTypes = {
 }
 
 const btnStyle ={
-    background: '#ff0000',
+    background: '#df0a00',
     color: '#fff',
     cursor: 'pointer',
-    padding: '5px 8px'
+    padding: '10px 8px',
+    margin: '10px 10px',
+    border: 'none',
+    fontSize: '20px',
+    borderRadius: '3px'
+}
+
+const editItemStyle = {
+    background: '#a5e1f2',
+    color: '#fff',
+    cursor: 'pointer',
+    padding: '10px 8px',
+    margin: '10px 10px',
+    border: 'none',
+    fontSize: '20px',
+    textAlign: 'center',
+    borderRadius: '3px'
 }
 
 export default AdminGalleryItem

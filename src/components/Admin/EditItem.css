@@ -1,22 +1,22 @@
-.product-infos-container{
+.edit-product-infos-container{
     margin: 10px 20px;
 }
 
-.product-infos-container h2{
+.edit-product-infos-container h2{
     text-align: center;
     padding: 10px 10px;
     margin: 20px 0px;
     
 }
 
-.form-group{
+.edit-form-group{
     margin: 20px;
     display: grid;
     grid-template-columns: 1fr;
 
 }
 
-.infos-text{
+.edit-infos-text{
     width: 95%;
     height: 2.3em;
     margin: 5px 0px;
@@ -24,7 +24,7 @@
     font-size: 20px;
 }
 
-.infos-submit-botton{
+.edit-infos-submit-botton{
     width: 200px;
     justify-self: center;
     padding-top: 18px;
@@ -37,16 +37,12 @@
     border-radius: 5px;
 }
 
-.create-item-root{
+.edit-item-root{
     height: 82vh;
 }
 
-.image-container{
+.edit-image-container{
     margin: 10px 20px;
     display: grid;
     grid-template-columns: 1fr;
-}
-
-.hideImageUploader{
-    display: none;
 }

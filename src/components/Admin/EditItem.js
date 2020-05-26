@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import './CreateItem.css';
+import './EditItem.css';
 
 export default class EditItem extends Component {
     constructor(props) {
@@ -81,47 +81,49 @@ export default class EditItem extends Component {
             itemImage: '',
             date: new Date()
         });
+
+        window.location = '/admingallery';
     } 
 
     render() {
         return (
-            <div>
-                <div>
-                    <h3>Modifier l'article</h3>
+            <div className="edit-item-root">
+                <div className="edit-product-infos-container">
+                    <h2>Modifier l'article</h2>
                     <form onSubmit={this.onSubmit} encType="multipart/form-data" id='form-id'>
-                        <div className="form-group">
+                        <div className="edit-form-group">
                             <label>Nom de l'article:</label>
                             <input type="text" 
                                         name="articleName"
                                         required
                                         value={this.state.itemName}
-                                        onChange={this.onChangeItemName} 
+                                        onChange={this.onChangeItemName}
+                                        className="edit-infos-text" 
                             />
                         </div>
-                        <div className= "from-group">
+                        <div className= "editform-group">
                             <label>Description:</label>
                             <input type="text" 
                                         name="articleDescription"
                                         required
                                         value={this.state.description}
-                                        onChange={this.onChangeDescription} 
+                                        onChange={this.onChangeDescription}
+                                        className="edit-infos-text" 
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="edit-form-group file">
+                            <label>Upload Your file</label>
+                            <input type="file" name="file" onChange = {this.onChangeHandler} className="edit-infos-text"/>
+                        </div>
+                        <div className="edit-form-group">
                             <input type="submit"
                                     value="Modifier l'article"
                                     name="uploaded_file"
+                                    className="edit-infos-submit-botton"
                             />
                         </div>
-                    </form>    
-                </div>
-                <div>
-                    <div className="form-group file">
-                        <label>Upload Your file</label>
-                        <input type="file" name="file" onChange = {this.onChangeHandler}/>
-                    </div>
-                    <button type="button" onClick={this.onClickHandler}>Upload image</button>
-                </div>
+                    </form>
+                </div>    
             </div>
         )
     }
