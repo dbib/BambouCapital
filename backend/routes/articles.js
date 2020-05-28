@@ -48,6 +48,9 @@ router.route('/upload').post((req, res) => {
         } else{
             if(req.file == undefined){
                 console.log(`error: No file selected!`)
+                res.status(400).send({
+                    message: `Error: No file selected`
+                })
             } else {
                 //here we took the last article in the collection article in our db and then we save those datas in variables
                 //and we take our image file from the client and save the info we need in a variable
@@ -84,7 +87,7 @@ router.route('/upload').post((req, res) => {
 
                         newArticleImg.save()
                             .then(()=> {
-                                res.json(`The product had been successfully added`);
+                                res.json(`L'article ${itemName} a ete ajouter avec succees`);
                                 console.log(`The new Product had been successfully added`);
                             })
                             .catch( err => res.status(400).json(`Error: ${err}`));
@@ -102,20 +105,27 @@ router.route('/upload').post((req, res) => {
 //@route method POST
 //@description: adding a new product infos in our DB for a moment
 router.route('/add').post((req, res) => {
-    const itemName = req.body.itemName;
-    const description = req.body.description;
-    const date = Date.parse(req.body.date);
-    const newArticle = new Article({
-        itemName,
-        description,
-        date
-    });
+    if( req.body.itemName == '' && req.body.description == ''){
+        console.log(`error: empty value!`)
+        res.status(400).send({
+            message: `Erreur: Vous devez remplir tout le champs avant d'envoyer`
+        })
+    }else {
+        const itemName = req.body.itemName;
+        const description = req.body.description;
+        const date = Date.parse(req.body.date);
+        const newArticle = new Article({
+            itemName,
+            description,
+            date
+        });
 
-    newArticle.save()
-        .then(() => res.json('Product infos added'))
-        .catch(err => res.status(400).json('Error: ' +err));
-    
-    console.log(`New Product infos have been added to the database`);
+        newArticle.save()
+            .then(() => res.json('Product infos added'))
+            .catch(err => res.status(400).json('Error: ' +err));
+        
+        console.log(`New Product infos have been added to the database`);
+    }
 });
 
 //@route GET

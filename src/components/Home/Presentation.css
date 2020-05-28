@@ -2,13 +2,11 @@
 .button {
     padding: 10px 32px;
     font-size: 16px;
-    text-transform: uppercase;
+    font-style: italic;
     text-decoration: none;
-    border-radius: 2px;
     display: inline-block;
     margin: 10px 0px;
-    color: black;
-    background: rgb(182, 180, 180);
+    color: rgb(11, 161, 66);
 }
 
 /*Mobile Style */
@@ -40,13 +38,16 @@ h2 {
     margin-top: 20px;
     padding: 0px 8px;
 }
+.welcome-text{
+    margin: 20px 0px 40px 0px;
+}
 
-.welcome-text .button{
-    background: #918529;
+.welcome-text .button-cta{
+    background-color: rgb(11, 161, 66);;
     padding: 18px 40px;
+    margin: 10px 0px;
     font-size: 18px;
     color: #FFF;
-
 }
 
 

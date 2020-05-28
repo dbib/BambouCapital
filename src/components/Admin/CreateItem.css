@@ -2,7 +2,7 @@
     margin: 10px 20px;
 }
 
-.product-infos-container h2{
+.product-infos-container h4, .image-container h4{
     text-align: center;
     padding: 10px 10px;
     margin: 20px 0px;
@@ -22,6 +22,17 @@
     margin: 5px 0px;
     border: 1px solid rgb(216, 216, 216);
     font-size: 20px;
+    padding: 0px 10px;
+}
+
+.infos-text:focus{
+    border: 1px solid rgb(11, 161, 66);
+}
+
+.step-container {
+    text-align: center;
+    font-style: italic;
+    color: rgb(160, 159, 159);
 }
 
 .infos-submit-botton{
@@ -38,7 +49,14 @@
 }
 
 .create-item-root{
-    height: 82vh;
+    width: 100%;
+    min-height: 80vh;
+}
+
+.create-item-root h2{
+    text-align: center;
+    padding: 10px 10px;
+    margin: 20px 0px;
 }
 
 .image-container{
@@ -47,6 +65,100 @@
     grid-template-columns: 1fr;
 }
 
-.hideImageUploader{
+.image-container p{
+    color:rgb(87, 83, 83);
+    font-style: italic;
+}
+.image-container a{
+    text-decoration: none;
+    text-transform: none;
+    font-style: normal;
+    color: black;
+    border-bottom: 1px solid rgb(11, 161, 66);
+}
+
+.image-container label{
+    margin-top: 30px;
+}
+
+.hideUploader{
+    display: none;
+}
+
+.imageSelector {
+    padding: 5px 10px;
+}
+
+.bar-container{
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+}
+
+.bar-text, .bar-image{
+    height: 7px;
+    border-radius: 10px;
+    width: 20%;
+    margin: 5px 8px;
+
+}
+
+.bar-text {
+    background-color: rgb(11, 161, 66);
+}
+
+
+.res-handler-normal{
+    border: 1px solid green;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgb(228, 255, 238);
+    margin:5px 20px 0px 20px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.res-handler-normal .first{
+    width: 90%;
+    padding:15px 15px;
+    grid-column: 1/10;
+}
+
+.res-handler-normal .second{
+    width: 10%;
+    padding:15px 15px;
+    grid-column: 10/11;
+    font-size: 20px;
+    text-align-last: center;
+    cursor: pointer;
+}
+
+.res-handler-error .first{
+    width: 90%;
+    padding:15px 15px;
+    grid-column: 1/10;
+}
+
+.res-handler-error .second{
+    width: 10%;
+    padding:15px 15px;
+    grid-column: 10/11;
+    font-size: 20px;
+    text-align-last: center;
+    cursor: pointer;
+}
+
+.res-handler-error{
+    border: 1px solid red;
+    border-radius: 5px;
+    text-align: center;
+    padding: 15px 0px;
+    background-color: rgb(255, 210, 210);
+    margin:5px 20px 0px 20px;
+    display: grid;
+}
+.res-handler-hide{
     display: none;
 }

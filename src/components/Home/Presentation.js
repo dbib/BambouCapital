@@ -12,7 +12,8 @@ export default class Presentation extends Component {
                     <div className="welcome-text">
                         <p>NOUS CONSTRUISONS DES OBJECTS ET DES MEUBLES QUI DONNENT A VOTRE MAISON UN COTE UNIQUE, CALME ET AUTHENTIQUE</p>
                         <br/>
-                        <a href="/" className="button">DECOUVRIRE</a>
+                        <br />
+                        <a href="/" className="button-cta">DECOUVRIRE</a>
                     </div>
                     <div className="welcome-img">
                         <img src={mainimage3} alt="Chaise en bambou"/>
