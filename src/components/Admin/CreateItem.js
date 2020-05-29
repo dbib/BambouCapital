@@ -198,7 +198,7 @@ export default class CreateItem extends Component {
                     <h4>Ajouter la photo de l'article</h4>
                     <div className="form-group file">
                         <p>Pour des raisons de performance, il faut ajouter seulement une photo dont la capacite est inferieur a 1MB.</p>
-                        <p>Pour envoyer des belles photos avec cette petite utilise <a target="_blank" rel="noopener noreferrer" href="https://tinypng.com/">Tinypng</a> pour convertir vos images! Vous n'allez pas le regretter</p>
+                        <p>Pour convertir vos jolies grosse photo en photo d'un poids inferieur a 1MB, utiliser <a target="_blank" rel="noopener noreferrer" href="https://tinypng.com/">Tinypng</a> pour convertir vos images! Vous n'allez pas le regretter</p>
                         <label>Ajouter la photo:</label>
                         <input type="file" name="file" onChange = {this.onChangeHandler} className="infos-text imageSelector"/>
                     </div>

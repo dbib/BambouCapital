@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Presentation.css';
-import mainimage3 from '../../assets/mainimg3.jpg';
-import missionimg from '../../assets/missionimg.jpeg';
+import missionimg from '../../assets/mainimg3.jpg';
+//import missionimg from '../../assets/missionimg.jpeg';
 import teamprimg1 from '../../assets/teamprimg1.jpeg';
 
 export default class Presentation extends Component {
@@ -10,16 +10,18 @@ export default class Presentation extends Component {
             <div id="home-container">      
                 <div className="presentaion-cont grid">
                     <div className="welcome-text">
-                        <p>NOUS CONSTRUISONS DES OBJECTS ET DES MEUBLES QUI DONNENT A VOTRE MAISON UN COTE UNIQUE, CALME ET AUTHENTIQUE</p>
+                        <h1>Soyez unique et different</h1>
+                        <h3>Parceque nous sommes tous unique, donner a votre maison un cote differant.</h3>
+                        <p>Nous construisons des objets et des meubles qui donnent aa votre maison un cote unique, calme et authentique</p>
                         <br/>
                         <br />
-                        <a href="/" className="button-cta">DECOUVRIRE</a>
-                    </div>
-                    <div className="welcome-img">
-                        <img src={mainimage3} alt="Chaise en bambou"/>
+                        <a href="/gallery" className="button-cta">Decouvrir</a>
                     </div> 
                 </div>
                 <div className="mission-cont grid">
+                    <div className="mission-img">
+                        <img src={missionimg} alt='lampshade' />
+                    </div>
                     <div className="mission-text">
                         <h2>Notre Mission</h2>
                         <p>A bambou Capital nous utilisons notre savoir faire et experience dans le travail du bois pour offrir
@@ -29,11 +31,11 @@ export default class Presentation extends Component {
                         <br/>
                         <a href="/Design" className="button"> En savoir plus</a>
                     </div>
-                    <div className="mission-img">
-                        <img src={missionimg} alt='lampshade' />
-                    </div>
                 </div>
                 <div className="team-cont grid">
+                    <div className="team-img">
+                        <img src={teamprimg1} alt="team images" />
+                    </div>
                     <div className="team-txt">
                         <h2>Notre Equipe</h2>
                         <p>Notre equipe est constituee des personnes qualifies et competantes qui 
@@ -41,9 +43,6 @@ export default class Presentation extends Component {
                         </p>
                         <br/>
                         <a href="/Design" className="button"> Voir notre equipe</a>
-                    </div>
-                    <div className="team-img">
-                        <img src={teamprimg1} alt="team images" />
                     </div>
                 </div>
             </div>

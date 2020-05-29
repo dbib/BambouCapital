@@ -6,7 +6,7 @@ import './Design.css';
 export default class Design extends Component {
     render() {
         return (
-            <div>
+            <div className="design-cont">
                 <div className="design-text">
                     <p>
                         Notre equipe est constituee des personnes competantes et qualifieee qui ont le

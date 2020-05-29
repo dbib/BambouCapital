@@ -101,7 +101,7 @@ export default class EditItem extends Component {
                                         className="edit-infos-text" 
                             />
                         </div>
-                        <div className= "editform-group">
+                        <div className= "edit-form-group">
                             <label>Description:</label>
                             <input type="text" 
                                         name="articleDescription"
@@ -113,7 +113,7 @@ export default class EditItem extends Component {
                         </div>
                         <div className="edit-form-group file">
                             <label>Upload Your file</label>
-                            <input type="file" name="file" onChange = {this.onChangeHandler} className="edit-infos-text"/>
+                            <input type="file" name="file" onChange = {this.onChangeHandler} className="edit-infos-text edit-infox-img-box"/>
                         </div>
                         <div className="edit-form-group">
                             <input type="submit"

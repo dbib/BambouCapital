@@ -8,6 +8,8 @@ import Design from './components/Design/Design';
 import CreateItem from './components/Admin/CreateItem';
 import AdminGallery from './components/Admin/AdminGallery';
 import EditItem from './components/Admin/EditItem';
+import SingleItem from './components/Gallery/SingleItem';
+import AdminLogin from './components/Admin/AdminLogin';
 import './App.css';
 import axios from 'axios';
 
@@ -62,6 +64,8 @@ export default class App extends Component {
           <Route path="/design" component={Design} />
           <Route path="/article/add" component={CreateItem} />
           <Route path="/article/edit/:id" component={EditItem} />
+          <Route path="article/:id" component={SingleItem} />
+          <Route path="/admin" component={AdminLogin} />
           <Footer />
         </div>
       </Router>
