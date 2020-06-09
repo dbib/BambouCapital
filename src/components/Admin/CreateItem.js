@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { addItem, addItemFull } from '../../actions/itemActions';
 
 import './CreateItem.css';
 
-export default class CreateItem extends Component {
+class CreateItem extends Component {
     constructor(props) {
         super(props);
 
@@ -36,29 +37,18 @@ export default class CreateItem extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        const Item = {
+        const itemRedux = {
             itemName: this.state.itemName,
             description: this.state.description,
-            //itemImage: this.state.itemImage,
             date: this.state.date
         }
+
+        // Add item via addItem action
+        this.props.addItem(itemRedux);
         
-        //sending data to our backend
-        axios.post('http://localhost:5000/articles/add', Item)
-           .then(res => {
-               console.log(res.data);
-               this.setState({
-                    responseData: res.data,
-                    responseStatus: res.status,
-                    popUpstate: true
-               })
-               if(res.statusText === 'OK'){
-                this.setState({
-                    imageUploader: true
-                   })
-               }
-               console.log(res.statusCode);
-            });
+        this.setState({
+            imageUploader: true
+        })
 
         this.setState({
             itemName: '',
@@ -87,20 +77,12 @@ export default class CreateItem extends Component {
         }else{
             const data = new FormData();
             data.append('file', this.state.itemImage);
-            axios.post("http://localhost:5000/articles/upload", data, {})
-                .then(res => {
-                    console.log(res.status);
-                    this.setState({
-                        responseData: res.data,
-                        responseStatus: res.status,
-                        popUpstate: true
-                })
-                if(res.statusText === 'OK') {
-                    this.setState({
-                        imageUploader: false
-                    });
-                }
-                });
+
+            this.props.addItemFull(data);
+
+            this.setState({
+                imageUploader: false
+            });
         
         }
     }
@@ -208,3 +190,9 @@ export default class CreateItem extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    item: state.item
+});
+
+export default connect(mapStateToProps, { addItem, addItemFull })(CreateItem);

@@ -10,64 +10,50 @@ import AdminGallery from './components/Admin/AdminGallery';
 import EditItem from './components/Admin/EditItem';
 import SingleItem from './components/Gallery/SingleItem';
 import AdminLogin from './components/Admin/AdminLogin';
+import AdminMain from './components/Admin/AdminMain';
+import AdminResetPass from './components/Admin/AdminResetPass';
+import AdminRootSettings from './components/Admin/AdminRootSettings';
+import AdminRegister from './components/Admin/AdminRegister';
+
 import './App.css';
-import axios from 'axios';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {articles: []}
-  }
-
-  componentDidMount() {
-    axios.get('http://localhost:5000/articles/')
-      .then(response => {
-        this.setState({articles: response.data });
-      })
-      .catch( (error) => {
-        console.log(error);
-      })
-  }
-
-  //Delete Item
-  deleteItem = (id) => {
-    axios.delete('http://localhost:5000/articles/'+id)
-      .then(res => console.log(res.data));
-    this.setState({
-      articles: this.state.articles.filter(el => el._id !== id)
-    })
-    console.log(`product deleted`)
-  }
-
   
   render() {
     return (
       <Router>
-        <div className="App">
-          <Nav />
-          <Route exact path='/' render ={props => (
-            <React.Fragment>
-              <Home />
-            </React.Fragment>
-          )} />
-          <Route path="/gallery" render ={props => (
-            <React.Fragment>
-              <Gallery articles={this.state.articles} />
-            </React.Fragment>
-          )} />
-          <Route path="/admingallery" render ={props => (
-            <React.Fragment>
-              <AdminGallery articles={this.state.articles} deleteItem ={this.deleteItem} />
-            </React.Fragment>
-          )} />
-          <Route path="/design" component={Design} />
-          <Route path="/article/add" component={CreateItem} />
-          <Route path="/article/edit/:id" component={EditItem} />
-          <Route path="article/:id" component={SingleItem} />
-          <Route path="/admin" component={AdminLogin} />
-          <Footer />
-        </div>
+        <Provider store={store}>
+          <div className="App">
+            <Nav />
+            <Route exact path='/' render ={props => (
+              <React.Fragment>
+                <Home />
+              </React.Fragment>
+            )} />
+            <Route path="/gallery" render ={props => (
+              <React.Fragment>
+                <Gallery />
+              </React.Fragment>
+            )} />
+            <Route path="/admingallery" render ={props => (
+              <React.Fragment>
+                <AdminGallery />
+              </React.Fragment>
+            )} />
+            <Route path="/design" component={Design} />
+            <Route path="/article/add" component={CreateItem} />
+            <Route path="/article/edit/:id" component={EditItem} />
+            <Route path="article/:id" component={SingleItem} />
+            <Route path="/adminlogin" component={AdminLogin} />
+            <Route path="/adminmain" component={AdminMain} />
+            <Route path="/adminresetpass" component={AdminResetPass} />
+            <Route path="/adminrootsettings" component={AdminRootSettings}/>
+            <Route path="/adminregister" component={AdminRegister} />
+            <Footer />
+          </div>
+        </Provider>
       </Router>
     )
   }

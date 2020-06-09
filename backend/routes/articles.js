@@ -5,7 +5,10 @@ let ArticleImg = require('../models/upload.model');
 //Multer Setup, this set up how our imag =e will be uploaded
 const multer = require("multer");
 const path = require("path");
-const fs = require("fs")
+const fs = require("fs");
+
+//Import auth middleware
+const auth = require('../middleware/auth');
 
 //Set Storage Engine
 const storage = multer.diskStorage({
@@ -39,9 +42,12 @@ const upload = multer({
     }
 }).single('file');
 
+
+
 //@route method POST
-//description: method for adding complete product (product infos and product img) in our DB
-router.route('/upload').post((req, res) => {
+//@description: method for adding complete product (product infos and product img) in our DB
+//@access Private
+router.route('/upload').post( auth, (req, res) => {
     upload(req, res, (err) => {
         if(err){
             console.log(`An error occurred ${err}`)
@@ -104,7 +110,8 @@ router.route('/upload').post((req, res) => {
 
 //@route method POST
 //@description: adding a new product infos in our DB for a moment
-router.route('/add').post((req, res) => {
+//@accesss Private
+router.route('/add').post( auth, (req, res) => {
     if( req.body.itemName == '' && req.body.description == ''){
         console.log(`error: empty value!`)
         res.status(400).send({
@@ -146,7 +153,8 @@ router.route('/:id').get((req, res) => {
 
 //@route method DELETE
 //@decription: deleting a specific article
-router.route('/:id').delete((req, res) => {
+//@access Private
+router.route('/:id').delete( auth, (req, res) => {
     ArticleImg.findByIdAndDelete(req.params.id)
         .then((article) => {
             fs.unlink(article.imagePath, (err) => {
@@ -159,8 +167,9 @@ router.route('/:id').delete((req, res) => {
 });
 
 //@route method POST
-//@decription: Updating a specific article
-router.route('/update/:id').post((req, res) => {
+//@decription: Updating a specific article informations
+//@access Private
+router.route('/update/:id').post( auth, (req, res) => {
     ArticleImg.findById(req.params.id)
         .then( article => {
             article.itemName = req.body.itemName;
@@ -174,7 +183,11 @@ router.route('/update/:id').post((req, res) => {
         .catch(err => res.status(400).json('Error: '+ err));
 });
 
-router.route('/updateimage/:id').post((req, res) => {
+
+//@route method POST
+//@decription: Updating a specific article image
+//@access Private
+router.route('/updateimage/:id').post( auth, (req, res) => {
     upload(req, res, (err) => {
         if(err){
             console.log(`An error occurred ${err}`)

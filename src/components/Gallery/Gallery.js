@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import GalleryItem from './GalleryItem';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getItems } from '../../actions/itemActions';
 
-export default class Gallery extends Component {
+class Gallery extends Component {
+
+    componentDidMount() {
+        this.props.getItems();
+    }
+
     render() {
+        const { items } = this.props.item;
         return (
             <div className = "gallery-container" style={galContStyle}>
                 {
-                    this.props.articles.map((article) => (
-                        <GalleryItem key={article._id} article = {article} />
+                    items.map((article) => (
+                        <GalleryItem key={article.id} article = {article} />
                     ))
                 }
             </div>
@@ -17,7 +25,7 @@ export default class Gallery extends Component {
 }
 
 const galContStyle = {
-    backgroundColor: '#f9f8fd',
+    backgroundColor: 'rgb(232, 255, 240);',
     border: '1px solid #f9f8fd',
     display: 'grid',
     gridTemplateColumns: '1fr',
@@ -26,7 +34,15 @@ const galContStyle = {
 }
 
 
+
 // PropTypes
 Gallery.propTypes = {
-    articles: PropTypes.array.isRequired
+    getItems: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired
 }
+
+const mapStateToProps = (state) => ({
+    item: state.item
+});
+
+export default connect(mapStateToProps, { getItems })(Gallery)

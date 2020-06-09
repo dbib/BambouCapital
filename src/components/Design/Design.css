@@ -15,11 +15,10 @@
 }
 
 .designer-cont{
-    border: 0.3px solid grey;
+    border: 0.3px solid rgb(209, 209, 209);
     background: #fff;
     border-radius: 8px;
     margin: 20px 0px;
-    box-shadow: 3px 3px 10px 0px grey;
 }
 
 .designer-text-cont{

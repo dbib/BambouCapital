@@ -3,6 +3,8 @@ import './Presentation.css';
 import missionimg from '../../assets/mainimg3.jpg';
 //import missionimg from '../../assets/missionimg.jpeg';
 import teamprimg1 from '../../assets/teamprimg1.jpeg';
+//import Nav from '../NavBar/Nav';
+
 
 export default class Presentation extends Component {
     render() {

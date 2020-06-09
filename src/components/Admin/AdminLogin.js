@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import loginpage from '../../assets/moise1.jpeg';
+import { Link } from 'react-router-dom';
+import loginpage from '../../assets/loginundraw.svg';
+import axios from 'axios';
 import './AdminLogin.css';
 
 export default class AdminLogin extends Component {
@@ -7,8 +9,8 @@ export default class AdminLogin extends Component {
         super(props);
 
         this.state = {
-            pseudo: 'Moise2020',
-            password: 'qwerty'
+            pseudo: '',
+            password: ''
         }
     }
 
@@ -26,21 +28,45 @@ export default class AdminLogin extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+
+        const Admin = {
+            pseudo: this.state.pseudo,
+            password: this.state.password
+        }
+        
+        //sending data to our backend
+        axios.post('http://localhost:5000/yser/auth', Admin)
+           .then(res => {
+                this.setState({
+                    responseData: res.data,
+                    responseStatus: res.status,
+                })
+                if(res.status === 200){
+                    this.setState({
+                        pseudo: '',
+                        newpass: '',
+                        date: new Date()
+                    });
+
+                    //window.location = '/adminlogin';
+                }
+            })
+            .catch( err => console.log(err));
     }
     
     render() {
         return (
-            <div>
-                <div className="ill-container">
-                    <img src={loginpage} alt="admin-illustration"/>
-                </div>
+            <div className="admin-login-container">
                 <div className="login-text-container">
                     <p>
                         Connectez vous entant qu'admin pour ajouter ou modilfier d'article
                     </p>
                 </div>
+                <div className="ill-container">
+                    <img src={loginpage} alt="admin-illustration"/>
+                </div>
                 <div className="login-form">
-                <form onSubmit={this.onSubmit} encType="multipart/form-data">
+                    <form onSubmit={this.onSubmit} encType="multipart/form-data">
                         <div className="login-form-group">
                             <label>Pseudo:</label>
                             <input type="text" 
@@ -63,12 +89,15 @@ export default class AdminLogin extends Component {
                                         className="admin-infos" 
                             />
                         </div>
-                        <div className="login-form-group">
+                        <div className="login-form-group login-botton">
                             <input type="submit"
                                     value="Connexion"
                                     name="connect-admin"
                                     className="admin-connect-botton"
                             />
+                            <Link to="/adminresetpass" className='login-forget-pass'>
+                                Mot de passe oublier
+                            </Link>
                         </div>
                     </form>
                 </div>

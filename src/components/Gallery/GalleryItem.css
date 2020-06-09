@@ -2,7 +2,7 @@
 .article-container{
     display: grid;
     border-radius: 10px;
-    box-shadow: 5px 5px 13px 2px rgba(0,0,0,0.4);
+    box-shadow: 5px 5px 8px -1px rgba(0,0,0,0.4);
 }
 
 .item-img-cont img {
@@ -22,6 +22,12 @@
 .gallery-article-desc {
     color: rgb(63, 63, 63);
     padding-bottom: 5px;
+}
+
+.item-link-tag{
+    text-transform: none;
+    text-decoration: none;
+    color: inherit;
 }
 
 .gallery-article-lire-plus {

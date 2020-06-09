@@ -1,0 +1,54 @@
+.admin-login-container{
+    height: 80vh;
+}
+
+.login-text-container{
+    padding: 20px;
+}
+
+.login-form{
+    padding: 20px 20px;
+    border-radius: 10px;
+    display: grid;
+    justify-items: center;
+}
+
+.login-form-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0.2em;
+    width: 205px;
+    margin: 0px 0px 20px 0px;
+    padding: 5px 0px;
+}
+
+.admin-infos{
+    width: 200px;
+    height: 40px;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.login-botton{
+    text-align: center;  
+}
+.admin-connect-botton{
+    height: 40px;
+    width: 100px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 10px;
+    background-color: #6c63ff;
+    box-shadow: 4px 4px 18px 1px rgba(0,0,0,0.59);
+    color: #fff;
+    font-size: 15px;
+}
+
+.login-botton .login-forget-pass{
+    font-size: 10px;
+    margin:20px 0px;
+    text-decoration: underline;
+    text-transform: none;
+    color: rgb(192, 7, 7);
+}

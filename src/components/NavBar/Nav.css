@@ -126,18 +126,19 @@
 
 nav {
     height: 80vh;
-    padding: 20px 0px;
+    padding: 0px;
 }
 
 nav ul {
     display: grid;
-    grid-template-rows: repeat(4, 120px);
+    grid-template-columns: 1fr;
     align-items: center;
 }
 
 nav ul li {
-    padding: 10px;
-    font-size: 25px;
+    padding: 25px;
+    font-size: 15px;
+
 }
 
 .nav-bar-container{

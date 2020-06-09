@@ -11,7 +11,7 @@ export class GalleryItem extends Component {
     render() {
         return (
             <div className="article-container" onClick={this.readItem}>
-                <Link to={"/article/"+this.props.article._id} itemInfos = {this.props.article}>
+                <Link to={"/article/"+this.props.article._id} itemInfos = {this.props.article} className="item-link-tag">
                     <div className='item-img-cont'>
                         <img src = {process.env.PUBLIC_URL + `/ressources/uploads/${this.props.article.imageFilename}`} alt={this.props.article.name}/>
                     </div>
