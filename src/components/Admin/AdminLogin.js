@@ -1,17 +1,40 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import loginpage from "../../assets/loginundraw.svg";
-import axios from "axios";
+import PropTypes from "prop-types";
+import { login } from "../../actions/authActions";
+import { connect } from "react-redux";
+import { clearErrors } from "../../actions/errorActions";
 import "./AdminLogin.css";
 
-export default class AdminLogin extends Component {
+class AdminLogin extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       pseudo: "",
       password: "",
+      msg: null,
     };
+  }
+
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
+  };
+
+  componentDidUpdate(prevProps) {
+    const { error, isAuthenticated } = this.props;
+    if (error !== prevProps.error) {
+      //Check for login error
+      if (error.id === "LOGIN_FAIL") {
+        this.setState({ msg: error.msg.msg });
+      } else {
+        this.setState({ msg: null });
+      }
+    }
   }
 
   onChangePseudo = (e) => {
@@ -29,30 +52,12 @@ export default class AdminLogin extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const Admin = {
-      pseudo: this.state.pseudo,
-      password: this.state.password,
-    };
+    const { pseudo, password } = this.state;
 
-    //sending data to our backend
-    axios
-      .post("http://localhost:5000/yser/auth", Admin)
-      .then((res) => {
-        this.setState({
-          responseData: res.data,
-          responseStatus: res.status,
-        });
-        if (res.status === 200) {
-          this.setState({
-            pseudo: "",
-            newpass: "",
-            date: new Date(),
-          });
+    const user = { pseudo, password };
 
-          //window.location = '/adminlogin';
-        }
-      })
-      .catch((err) => console.log(err));
+    // Attempt to login
+    this.props.login(user);
   };
 
   render() {
@@ -109,3 +114,10 @@ export default class AdminLogin extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error,
+});
+
+export default connect(mapStateToProps, { login, clearErrors })(AdminLogin);

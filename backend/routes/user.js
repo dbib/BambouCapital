@@ -12,17 +12,27 @@ let User = require("../models/user.model");
 //@route POST /user
 //@description: fRegister new user
 //@access Public
-router.route("/").post((req, res) => {
-  const { pseudo, email, password } = req.body;
+router.route("/register").post((req, res) => {
+  const { pseudo, email, password, passwordConfirmation } = req.body;
 
   //Validation
-  if (!pseudo || !email || !password) {
-    return res.status(400).json({ msg: "Please enter all fields" });
+  if (!pseudo || !email || !password || !passwordConfirmation) {
+    return res.status(400).json({ msg: "Veuillez remplir toute les cases" });
+  }
+
+  //Verifiying password correpondance
+  if (password !== passwordConfirmation) {
+    return res.status(400).json({
+      msg: "Veuillez ecrirez un mot seule mot de passe pour le 2 champs",
+    });
   }
 
   // Check for existing user
   User.findOne({ email }).then((user) => {
-    if (user) return res.status(400).json({ msg: "User already exists" });
+    if (user)
+      return res
+        .status(400)
+        .json({ msg: "un utilisateur qui a ce nom existe deja" });
 
     const newUser = new User({
       pseudo,
@@ -62,22 +72,23 @@ router.route("/").post((req, res) => {
 //@description: Auth user
 //@access Public
 router.route("/auth").post((req, res) => {
-  const { email, password } = req.body;
+  const { pseudo, password } = req.body;
 
   //Validation
-  if (!email || !password) {
-    return res.status(400).json({ msg: "Please enter all fields" });
+  if (!pseudo || !password) {
+    return res.status(400).json({ msg: "Veuillez remplir toutes les cases" });
   }
 
   // Check fro existing user
-  User.findOne({ email }).then((user) => {
-    if (!user) return res.status(400).json({ msg: "User does not exists" });
+  User.findOne({ pseudo }).then((user) => {
+    if (!user)
+      return res.status(400).json({ msg: "nom d'utilisateur n'existe pas" });
 
     // Validate password
 
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (!isMatch)
-        return res.status(400).json({ msg: "Invalid credentials " });
+        return res.status(400).json({ msg: " mot de passe incorrect " });
 
       jwt.sign(
         { id: user.id },
