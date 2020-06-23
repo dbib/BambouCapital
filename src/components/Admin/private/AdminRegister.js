@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./AdminRegister.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { register } from "../../actions/authActions";
-import { clearErrors } from "../../actions/errorActions";
+import { register } from "../../../actions/authActions";
+import { clearErrors } from "../../../actions/errorActions";
 
 class AdminRegister extends Component {
   constructor(props) {

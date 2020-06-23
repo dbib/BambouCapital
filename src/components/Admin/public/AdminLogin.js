@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import loginpage from "../../assets/loginundraw.svg";
+import loginpage from "../../../assets/loginundraw.svg";
 import PropTypes from "prop-types";
-import { login } from "../../actions/authActions";
+import { login } from "../../../actions/authActions";
 import { connect } from "react-redux";
-import { clearErrors } from "../../actions/errorActions";
+import { clearErrors } from "../../../actions/errorActions";
 import "./AdminLogin.css";
 
 class AdminLogin extends Component {
@@ -34,6 +34,10 @@ class AdminLogin extends Component {
       } else {
         this.setState({ msg: null });
       }
+    }
+
+    if (isAuthenticated) {
+      //window.location = "/admindashboard";
     }
   }
 
