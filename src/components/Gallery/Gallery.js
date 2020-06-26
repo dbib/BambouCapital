@@ -1,48 +1,42 @@
-import React, { Component } from 'react';
-import GalleryItem from './GalleryItem';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getItems } from '../../actions/itemActions';
+import React, { Component } from "react";
+import GalleryItem from "./GalleryItem";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getItems } from "../../actions/itemActions";
+
+import "./Gallery.css";
 
 class Gallery extends Component {
+  componentDidMount() {
+    this.props.getItems();
+  }
 
-    componentDidMount() {
-        this.props.getItems();
-    }
-
-    render() {
-        const { items } = this.props.item;
-        return (
-            <div className = "gallery-container" style={galContStyle}>
-                {
-                    items.map((article) => (
-                        <GalleryItem key={article.id} article = {article} />
-                    ))
-                }
-            </div>
-        )
-    }
+  render() {
+    const { items } = this.props.item;
+    return (
+      <div className="gallery-container-box">
+        <div className="gallery-container">
+          {items.map((article) => (
+            <GalleryItem
+              key={article.id}
+              article={article}
+              className="single-item"
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
-
-const galContStyle = {
-    backgroundColor: 'rgb(232, 255, 240);',
-    border: '1px solid #f9f8fd',
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gridGap: '30px',
-    padding: '20px 30px'
-}
-
-
 
 // PropTypes
 Gallery.propTypes = {
-    getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
-}
+  getItems: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = (state) => ({
-    item: state.item
+  item: state.item,
 });
 
-export default connect(mapStateToProps, { getItems })(Gallery)
+export default connect(mapStateToProps, { getItems })(Gallery);

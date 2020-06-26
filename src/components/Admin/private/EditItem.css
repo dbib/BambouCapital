@@ -1,53 +1,77 @@
-.edit-product-infos-container{
-    margin: 10px 20px;
+.edit-product-infos-container {
+  margin: 10px 20px;
 }
 
-.edit-product-infos-container h2{
-    text-align: center;
-    padding: 10px 10px;
-    margin: 20px 0px;
-    
+.edit-product-infos-container h2 {
+  text-align: center;
+  padding: 10px 10px;
+  margin: 20px 0px;
 }
 
-.edit-form-group{
-    margin: 20px;
-    display: grid;
-    grid-template-columns: 1fr;
-
+.edit-form-group {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
-.edit-infos-text{
-    width: 95%;
-    height: 2.3em;
-    margin: 5px 0px;
-    border: 1px solid rgb(216, 216, 216);
-    font-size: 20px;
-    padding: 0px 10px;
+.edit-infos-text {
+  width: 95%;
+  height: 2.3em;
+  margin: 5px 0px;
+  border: 1px solid rgb(216, 216, 216);
+  font-size: 15px;
+  padding: 0px 10px;
 }
 
-.edit-infox-img-box{
-    padding: 7px 10px;
+.edit-infox-img-box {
+  padding: 7px 10px;
 }
 
-.edit-infos-submit-botton{
-    width: 200px;
-    justify-self: center;
-    padding-top: 18px;
-    padding-bottom: 18px;
-    font-size: 18px;
-    text-align: center;
-    background: rgb(11, 161, 66);
-    color:#fff;
-    border: none;
+.edit-infos-submit-botton {
+  width: 200px;
+  justify-self: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  font-size: 18px;
+  text-align: center;
+  background: rgb(11, 161, 66);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.edit-item {
+  background-color: #fff;
+  padding-top: 20px;
+  min-height: 95vh;
+}
+
+.edit-item-root {
+  padding: 10px 0;
+  background-color: #fff;
+  height: 700px;
+}
+
+.edit-image-container {
+  margin: 10px 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.edit-form-group textarea {
+  height: 100px;
+}
+
+@media screen and (min-width: 620px) {
+  .edit-item {
+    background-color: rgb(248, 255, 255);
+    padding-top: 20px;
+  }
+  .edit-item-root {
     border-radius: 5px;
-}
-
-.edit-item-root{
-    height: 82vh;
-}
-
-.edit-image-container{
-    margin: 10px 20px;
-    display: grid;
-    grid-template-columns: 1fr;
+    box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.4);
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+  }
 }

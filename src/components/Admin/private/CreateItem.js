@@ -53,9 +53,7 @@ class CreateItem extends Component {
     this.setState({
       itemName: "",
       description: "",
-      //itemImage: '',
       date: new Date(),
-      //imageUploader: true
     });
   };
 
@@ -128,97 +126,99 @@ class CreateItem extends Component {
     }
 
     return (
-      <div className="create-item-root">
-        <div className={resHandler}>
-          <p className="first">{responseReceived}</p>
-          <p className="second" onClick={this.onPopupClick}>
-            X
-          </p>
-        </div>
-        <h2>Ajouter un article</h2>
-        <p className="step-container">{`${step} sur 2`}</p>
-        <div className="bar-container">
-          <div className="bar-text"></div>
-          <div
-            className="bar-image"
-            style={{ backgroundColor: barImageBackgroundColorStyle }}
-          ></div>
-        </div>
-        <div className={textInfosClasses}>
-          <h4>Ajouter les informations de l'article</h4>
-          <form
-            onSubmit={this.onSubmit}
-            encType="multipart/form-data"
-            id="form-id"
-          >
-            <div className="form-group">
-              <label>Nom de l'article:</label>
-              <input
-                type="text"
-                name="articleName"
-                required
-                placeholder="Coxy bambou lampe"
-                value={this.state.itemName}
-                onChange={this.onChangeItemName}
-                className="infos-text"
-              />
-            </div>
-            <div className="form-group">
-              <label>Description:</label>
-              <input
-                type="text"
-                name="articleDescription"
-                required
-                placeholder="made in DRC"
-                value={this.state.description}
-                onChange={this.onChangeDescription}
-                className="infos-text"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="submit"
-                value="Ajouter l'article"
-                name="uploaded_file"
-                className="infos-submit-botton"
-              />
-            </div>
-          </form>
-        </div>
-        <div className={imageContainer}>
-          <h4>Ajouter la photo de l'article</h4>
-          <div className="form-group file">
-            <p>
-              Pour des raisons de performance, il faut ajouter seulement une
-              photo dont la capacite est inferieur a 1MB.
+      <div className="create-item">
+        <div className="create-item-root">
+          <div className={resHandler}>
+            <p className="first">{responseReceived}</p>
+            <p className="second" onClick={this.onPopupClick}>
+              X
             </p>
-            <p>
-              Pour convertir vos jolies grosse photo en photo d'un poids
-              inferieur a 1MB, utiliser{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://tinypng.com/"
-              >
-                Tinypng
-              </a>{" "}
-              pour convertir vos images! Vous n'allez pas le regretter
-            </p>
-            <label>Ajouter la photo:</label>
-            <input
-              type="file"
-              name="file"
-              onChange={this.onChangeHandler}
-              className="infos-text imageSelector"
-            />
           </div>
-          <button
-            type="button"
-            onClick={this.onClickHandler}
-            className="infos-submit-botton"
-          >
-            Ajouter l'image
-          </button>
+          <h2>Ajouter un article</h2>
+          <p className="step-container">{`${step} sur 2`}</p>
+          <div className="bar-container">
+            <div className="bar-text"></div>
+            <div
+              className="bar-image"
+              style={{ backgroundColor: barImageBackgroundColorStyle }}
+            ></div>
+          </div>
+          <div className={textInfosClasses}>
+            <h4>Ajouter les informations de l'article</h4>
+            <form
+              onSubmit={this.onSubmit}
+              encType="multipart/form-data"
+              id="form-id"
+            >
+              <div className="form-group">
+                <label>Nom de l'article:</label>
+                <input
+                  type="text"
+                  name="articleName"
+                  required
+                  placeholder="Coxy bambou lampe"
+                  value={this.state.itemName}
+                  onChange={this.onChangeItemName}
+                  className="infos-text"
+                />
+              </div>
+              <div className="form-group">
+                <label>Déscription:</label>
+                <textarea
+                  type="text"
+                  name="articleDescription"
+                  required
+                  placeholder="décrivez un peu l'article que vous voulez ajouter"
+                  value={this.state.description}
+                  onChange={this.onChangeDescription}
+                  className="infos-text"
+                ></textarea>
+              </div>
+              <div className="form-group">
+                <input
+                  type="submit"
+                  value="Ajouter l'article"
+                  name="uploaded_file"
+                  className="infos-submit-botton"
+                />
+              </div>
+            </form>
+          </div>
+          <div className={imageContainer}>
+            <h4>Ajouter la photo de l'article</h4>
+            <div className="form-group file">
+              <p>
+                Pour des raisons de performance, il faut ajouter seulement une
+                photo dont la capacite est inferieur à 1MB.
+              </p>
+              <p>
+                Pour convertir vos jolies grosse photo en photo d'un poids
+                inferieur à 1MB, utiliser
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://tinypng.com/"
+                >
+                  Tinypng
+                </a>
+                pour convertir vos images! Vous n'allez pas le regretter
+              </p>
+              <label>Ajouter la photo:</label>
+              <input
+                type="file"
+                name="file"
+                onChange={this.onChangeHandler}
+                className="infos-text imageSelector"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={this.onClickHandler}
+              className="infos-submit-botton"
+            >
+              Ajouter l'image
+            </button>
+          </div>
         </div>
       </div>
     );

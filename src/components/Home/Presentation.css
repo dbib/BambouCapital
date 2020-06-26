@@ -1,100 +1,281 @@
 /*General*/
 .button {
-    padding: 10px 32px;
-    font-size: 16px;
-    font-style: italic;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px 0px;
-    color: rgb(11, 161, 66);
+  padding: 10px 32px;
+  font-size: 16px;
+  font-style: italic;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px 0px;
+  color: rgb(11, 161, 66);
 }
 
-@font-face{
-    font-family: "Montserrat Bold";
-    src: url('../../assets/fonts/Roboto/Montserrat-Bold.ttf');
+@font-face {
+  font-family: "Montserrat Bold";
+  src: url("../../assets/fonts/Roboto/Montserrat-Bold.ttf");
 }
 
-@font-face{
-    font-family: "Montserrat Thin";
-    src: url('../../assets/fonts/Roboto/Montserrat-Thin.ttf');
+@font-face {
+  font-family: "Montserrat Thin";
+  src: url("../../assets/fonts/Roboto/Montserrat-Thin.ttf");
 }
 
-@font-face{
-    font-family: "Roboto Thin";
-    src: url('../../assets/fonts/Roboto/Roboto-Thin.ttf');
+@font-face {
+  font-family: "Roboto Thin";
+  src: url("../../assets/fonts/Roboto/Roboto-Thin.ttf");
 }
-
 
 /*Mobile Style */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 1em;
+.grid,
+.mission-cont,
+.team-cont {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1em;
 }
 
-.presentaion-cont{
-    margin-top: 0px;
-    min-height: 95vh;
-    background: rgb(87,196,135);
-    background: linear-gradient(222deg, rgba(87,196,135,1) 0%, rgba(92,65,143,1) 100%);
-    color: #FFF;
+.presentaion-cont {
+  margin-top: 0px;
+  min-height: 95vh;
+  background: rgb(58, 207, 123);
+  background: linear-gradient(
+    222deg,
+    rgb(72, 219, 119) 0%,
+    rgb(76, 36, 161) 100%
+  );
+  color: #fff;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
 
 h2 {
-    margin: 10px 0px;
+  margin: 10px 0px;
 }
-.welcome-img, .mission-img, .team-img{
-    grid-column: 1/9;
-}
-
-.welcome-text, .mission-text,.team-txt{
-    grid-column: 1/9;
-    grid-row: 2;
-    text-align: center;
-    margin-top: 20px;
-    padding: 0px 8px;
-}
-.welcome-text{
-    margin: 20px 0px 40px 0px;
+.welcome-img,
+.mission-img,
+.team-img {
+  grid-column: 1/13;
 }
 
-.welcome-text .button-cta{
-    background-color: rgb(11, 161, 66);
-    border-radius: 40px;
-    padding: 15px 40px;
-    margin: 10px 0px;
-    font-size: 18px;
-    color: #000;
-    font-family: "Montserrat Thin";
-    box-shadow: 5px 5px 23px 2px rgba(0,0,0,0.59);
-    cursor: pointer;
+.welcome-text,
+.mission-text,
+.team-text {
+  grid-column: 1/13;
+  grid-row: 2;
+  text-align: justify;
+  margin-top: 20px;
+  padding: 0px 8px;
 }
 
-.welcome-text h1{
-    font-family: "Montserrat Bold";
+.welcome-text {
+  text-align: center;
+}
+
+.mission-text p,
+.team-text p {
+  color: rgb(85, 85, 85);
+  line-height: 1.5;
+}
+
+.welcome-text {
+  margin: 20px 0px 40px 0px;
+}
+
+.welcome-text .button-cta {
+  background-color: rgb(11, 161, 66);
+  border-radius: 10px;
+  padding: 15px 40px;
+  margin: 20px 0px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  font-family: "Montserrat Thin";
+  box-shadow: 5px 5px 23px 2px rgba(0, 0, 0, 0.59);
+  cursor: pointer;
+}
+
+.welcome-text h1 {
+  font-family: "Montserrat Bold";
+  text-align: start;
+  margin: 0px 0px 5px 10px;
+  font-size: 64px;
+  text-shadow: 4px 4px 5px rgb(200, 15, 175);
+}
+
+.welcome-text h3 {
+  font-family: "Montserrat Thin";
+  text-align: start;
+  margin: 0px 0px 10px 10px;
+}
+
+.welcome-text p {
+  font-family: "Roboto Thin";
+  text-align: start;
+  margin: 0px 0px 10px 10px;
+}
+
+.mission-cont,
+.team-cont {
+  padding: 20px;
+}
+
+@media screen and (min-width: 620px) {
+  .welcome-text h1 {
+    font-size: 80px;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .welcome-text h3 {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .welcome-text p {
+    max-width: 600px;
+    margin: 0px auto;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .welcome-text h1 {
+    font-size: 90px;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .welcome-text h3 {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .welcome-text p {
+    max-width: 700px;
+    margin: 0px auto;
+    margin-bottom: 20px;
+  }
+
+  .mission-cont {
+    max-width: 1200px;
+    margin: 200px auto;
+  }
+
+  .mission-img {
+    grid-column: 2/7;
+  }
+
+  .mission-img img {
+    width: 100%;
+  }
+
+  .mission-text {
+    grid-column: 7/12;
+    grid-row: 1;
+    align-self: center;
     text-align: start;
-    margin: 0px 0px 5px 10px;
-    font-size: 70px;
+  }
+
+  .team-cont {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 200px 0;
+  }
+
+  .team-img {
+    grid-column: 7/12;
+  }
+
+  .team-img img {
+    width: 100%;
+  }
+
+  .team-text {
+    grid-column: 2/7;
+    grid-row: 1;
+    align-self: center;
+    text-align: end;
+  }
+
+  .mission-text p,
+  .team-text p {
+    color: rgb(85, 85, 85);
+  }
 }
 
-.welcome-text h3{
-    font-family: "Montserrat Thin";
+@media screen and (min-width: 1200px) {
+  .welcome-text h1 {
+    font-size: 100px;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .welcome-text h3 {
+    font-size: 35px;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .welcome-text p {
+    font-size: 30px;
+    max-width: 1000px;
+    margin: 0px auto;
+    margin-bottom: 20px;
+  }
+
+  .mission-cont {
+    max-width: 1200px;
+    margin: 200px auto;
+    margin-bottom: 100px;
+    gap: 3em;
+  }
+
+  .mission-img {
+    grid-column: 2/7;
+  }
+
+  .mission-img img {
+    width: 100%;
+  }
+
+  .mission-text {
+    grid-column: 7/12;
+    grid-row: 1;
+    align-self: center;
     text-align: start;
-    margin: 0px 0px 10px 10px;
+  }
+
+  .team-cont {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 0 100px 0;
+    gap: 3em;
+  }
+
+  .team-img {
+    grid-column: 7/12;
+  }
+
+  .team-img img {
+    width: 100%;
+  }
+
+  .team-text {
+    grid-column: 2/7;
+    grid-row: 1;
+    align-self: center;
+    text-align: end;
+  }
+
+  .mission-text p,
+  .team-text p {
+    color: rgb(85, 85, 85);
+  }
 }
-
-.welcome-text p{
-    font-family: "Roboto Thin";
-    text-align: start;
-    margin: 0px 0px 10px 10px;
-}
-
-.mission-cont, .team-cont {
-    padding: 20px;
-}
-
-

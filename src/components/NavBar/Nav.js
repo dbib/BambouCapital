@@ -35,12 +35,12 @@ class Nav extends Component {
   render() {
     let className = "menu-btn";
     let navBarContClass = "nav-bar-container";
-    let navElmState = "nav-closed";
+    let navElmState = "small-screen nav-closed";
     let navBtnCont = "btn-container";
     if (this.state.isActive) {
       className += " open";
       navBarContClass += " navopen";
-      navElmState = "";
+      navElmState = "small-screen";
       navBtnCont += " btn-cont-active";
     }
 
@@ -60,7 +60,7 @@ class Nav extends Component {
               className="link"
               onClick={this.handleClick}
             >
-              Gestionnaire de gallerie
+              Gerer la galerie
             </Link>
           </li>
           <li>
@@ -90,7 +90,7 @@ class Nav extends Component {
           </li>
           <li>
             <Link to="/gallery" className="link" onClick={this.handleClick}>
-              Galleries
+              Galerie
             </Link>
           </li>
           <li>

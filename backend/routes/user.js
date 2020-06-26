@@ -114,9 +114,9 @@ router.route("/auth").post((req, res) => {
 //@description: Get admin data
 //@access Public
 
-router.route("/admin").get(auth, (req, res) => {
+router.route("/singleuser").get(auth, (req, res) => {
   User.findById(req.user.id)
-    .select("password")
+    .select("-password")
     .then((user) => res.json(user));
 });
 

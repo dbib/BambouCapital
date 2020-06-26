@@ -40,3 +40,10 @@
   width: 150px;
   background-color: #6c63ff;
 }
+
+@media screen and (min-width: 620px) {
+  .admin-main-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
