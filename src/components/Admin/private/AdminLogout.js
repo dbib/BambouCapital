@@ -14,8 +14,8 @@ class AdminLogout extends Component {
   render() {
     return (
       <Fragment>
-        <Link onClick={this.props.logout} path="#" className="link">
-          Deconnexion
+        <Link to="/" onClick={this.props.logout} path="#" className="link">
+          DECONNEXION
         </Link>
       </Fragment>
     );

@@ -8,7 +8,7 @@ li,
   margin: 0;
   padding: 0;
   text-decoration: none;
-  font-family: "Roboto Regular";
+  font-family: "Archer Light";
 }
 
 li {
@@ -24,4 +24,29 @@ body {
 @font-face {
   font-family: "Roboto Regular";
   src: url("assets/fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Archer Light";
+  src: url("assets/fonts/Archer-Light.ttf");
+}
+
+@font-face {
+  font-family: "Archer Medium";
+  src: url("assets/fonts/Archer-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Gotham Regular";
+  src: url("assets/fonts/Gotham.ttf");
+}
+
+@font-face {
+  font-family: "Gotham Light";
+  src: url("assets/fonts/Gotham-Light.ttf");
+}
+
+@font-face {
+  font-family: "Gotham Thin";
+  src: url("assets/fonts/Gotham-Thin.ttf");
 }

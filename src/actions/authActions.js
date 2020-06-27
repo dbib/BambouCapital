@@ -21,7 +21,7 @@ export const loadUser = () => (dispatch, getState) => {
     .get("http://localhost:5000/user/singleuser", tokenConfig(getState))
     .then((res) =>
       dispatch({
-        type: USER_LOADING,
+        type: USER_LOADED,
         payload: res.data,
       })
     )

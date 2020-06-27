@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import loginpage from "../../../assets/loginundraw.svg";
 import PropTypes from "prop-types";
 import { login } from "../../../actions/authActions";

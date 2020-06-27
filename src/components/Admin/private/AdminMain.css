@@ -41,6 +41,12 @@
   background-color: #6c63ff;
 }
 
+.user-connected {
+  width: 100%;
+  background-color: rgb(207, 232, 206);
+  text-align: center;
+}
+
 @media screen and (min-width: 620px) {
   .admin-main-container {
     max-width: 600px;

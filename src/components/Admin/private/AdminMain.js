@@ -3,14 +3,23 @@ import { Link } from "react-router-dom";
 import adminmainillustration from "../../../assets/adminmain.svg";
 import "./AdminMain.css";
 
-export default class adminMain extends Component {
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+class AdminMain extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+  };
+
   render() {
+    const { user } = this.props.auth;
     return (
       <div className="admin-main">
+        <p className="user-connected">{user ? user.pseudo : ""} est connecté</p>
         <div className="admin-main-container">
           <div className="admin-main-text-cont">
             <h2>
-              Bienvenu à la page admin d'ici vous pouvez modifier, supprimer et
+              Bienvenu à la page admin, d'ici vous pouvez modifier, supprimer et
               ajouter des nouvels articles
             </h2>
           </div>
@@ -33,3 +42,9 @@ export default class adminMain extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, null)(AdminMain);

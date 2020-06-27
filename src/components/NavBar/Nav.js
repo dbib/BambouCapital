@@ -23,6 +23,11 @@ class Nav extends Component {
     document.body.style.overflow = "visible";
   };
 
+  handleClickLink = () => {
+    this.setState({ isActive: false });
+    document.body.style.overflow = "visible";
+  };
+
   handleClick = () => {
     if (!this.state.isActive) {
       this.setState({ isActive: true });
@@ -44,36 +49,40 @@ class Nav extends Component {
       navBtnCont += " btn-cont-active";
     }
 
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
 
     const authLinks = (
       <Fragment>
         <ul>
           <li>
-            <Link to="/" className="link" onClick={this.handleClick}>
-              Accueil
+            <Link to="/" className="link" onClick={this.handleClickLink}>
+              ACCUEIL
+            </Link>
+          </li>
+          <li>
+            <Link to="/gallery" className="link" onClick={this.handleClickLink}>
+              GERER LA GALERIE
             </Link>
           </li>
           <li>
             <Link
-              to="/admingallery"
+              to="/article/add"
               className="link"
-              onClick={this.handleClick}
+              onClick={this.handleClickLink}
             >
-              Gerer la galerie
+              AJOUTER UN ARTICLE
             </Link>
           </li>
           <li>
-            <Link to="/article/add" className="link" onClick={this.handleClick}>
-              Ajouter un article
+            <Link
+              to="dashboard"
+              className="link"
+              onClick={this.handleClickLink}
+            >
+              DASHBOARD
             </Link>
           </li>
-          <li>
-            <Link to="/adminmain" className="link" onClick={this.handleClick}>
-              Dashboard
-            </Link>
-          </li>
-          <li onClick={this.handleClick}>
+          <li onClick={this.handleClickLink}>
             <AdminLogout />
           </li>
         </ul>
@@ -84,18 +93,18 @@ class Nav extends Component {
       <Fragment>
         <ul>
           <li>
-            <Link to="/" className="link" onClick={this.handleClick}>
-              Accueil
+            <Link to="/" className="link" onClick={this.handleClickLink}>
+              ACCUEIL
             </Link>
           </li>
           <li>
-            <Link to="/gallery" className="link" onClick={this.handleClick}>
-              Galerie
+            <Link to="/gallery" className="link" onClick={this.handleClickLink}>
+              GALERIE
             </Link>
           </li>
           <li>
-            <Link to="/design" className="link" onClick={this.handleClick}>
-              Design
+            <Link to="/design" className="link" onClick={this.handleClickLink}>
+              DESIGN
             </Link>
           </li>
         </ul>
@@ -103,28 +112,30 @@ class Nav extends Component {
     );
 
     return (
-      <div className={navBarContClass}>
-        <div className="nav-container">
-          <div className="brand-name-container">
-            <h3>
-              <Link
-                to="/"
-                className="link name"
-                onClick={this.handleClickBrandName}
-              >
-                Bambou_Cap
-              </Link>
-            </h3>
-          </div>
-          <div className={navBtnCont}>
-            <div className={className} onClick={this.handleClick}>
-              <div className="menu-btn__burger"></div>
+      <div className="nav-wrapper">
+        <div className={navBarContClass}>
+          <div className="nav-container">
+            <div className="brand-name-container">
+              <h3>
+                <Link
+                  to="/"
+                  className="link name"
+                  onClick={this.handleClickBrandName}
+                >
+                  Bambou_Cap
+                </Link>
+              </h3>
+            </div>
+            <div className={navBtnCont}>
+              <div className={className} onClick={this.handleClick}>
+                <div className="menu-btn__burger"></div>
+              </div>
             </div>
           </div>
+          <nav className={navElmState}>
+            {isAuthenticated ? authLinks : guestLinks}
+          </nav>
         </div>
-        <nav className={navElmState}>
-          {isAuthenticated ? authLinks : guestLinks}
-        </nav>
       </div>
     );
   }

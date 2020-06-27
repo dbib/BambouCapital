@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import "./GalleryItem.css";
 
 export class GalleryItem extends Component {
@@ -9,8 +8,16 @@ export class GalleryItem extends Component {
   };
 
   render() {
+    let singleItemContClass = "article-container";
+    const eltHeight = this.props.article.imageHeightDimension;
+    const eltWidth = this.props.article.imageWidthDimension;
+    const eltDiff = eltHeight - eltWidth;
+
+    if (eltDiff > 200) {
+      singleItemContClass += " big-box";
+    }
     return (
-      <div className="article-container" onClick={this.readItem}>
+      <div className={singleItemContClass} onClick={this.readItem}>
         <div className="item-img-cont">
           <img
             src={

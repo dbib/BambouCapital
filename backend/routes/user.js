@@ -17,22 +17,20 @@ router.route("/register").post((req, res) => {
 
   //Validation
   if (!pseudo || !email || !password || !passwordConfirmation) {
-    return res.status(400).json({ msg: "Veuillez remplir toute les cases" });
+    return res.status(400).json({ msg: "Veuillez remplir toutes les cases" });
   }
 
   //Verifiying password correpondance
   if (password !== passwordConfirmation) {
     return res.status(400).json({
-      msg: "Veuillez ecrirez un mot seule mot de passe pour le 2 champs",
+      msg: "Veuillez écrirez un seule mot de passe pour le 2 champs",
     });
   }
 
   // Check for existing user
   User.findOne({ email }).then((user) => {
     if (user)
-      return res
-        .status(400)
-        .json({ msg: "un utilisateur qui a ce nom existe deja" });
+      return res.status(400).json({ msg: "cet pseudo n'est pas disponible" });
 
     const newUser = new User({
       pseudo,
@@ -81,8 +79,7 @@ router.route("/auth").post((req, res) => {
 
   // Check fro existing user
   User.findOne({ pseudo }).then((user) => {
-    if (!user)
-      return res.status(400).json({ msg: "nom d'utilisateur n'existe pas" });
+    if (!user) return res.status(400).json({ msg: "Pseudo incorrect" });
 
     // Validate password
 
