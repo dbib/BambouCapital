@@ -59,7 +59,14 @@ class AdminRegister extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { pseudo, email, password, passwordConfirmation } = this.state;
+    let { pseudo, email, password, passwordConfirmation } = this.state;
+
+    // Removing white space
+    pseudo = pseudo.trim();
+    pseudo = pseudo.split(" ").join("");
+
+    email = email.trim();
+    email = email.split(" ").join("");
 
     //Create user object
     const newUser = {

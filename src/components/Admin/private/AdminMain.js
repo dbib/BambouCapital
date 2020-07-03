@@ -30,11 +30,8 @@ class AdminMain extends Component {
             <Link to="/article/add" className="admin-func green">
               Ajouter un nouvel article
             </Link>
-            <Link to="/admingallery" className="admin-func violet">
+            <Link to="/gallery" className="admin-func violet">
               Gerer les articles
-            </Link>
-            <Link to="/adminrootsettings" className="admin-func violet">
-              Modifier paramettres de l'admin
             </Link>
           </div>
         </div>

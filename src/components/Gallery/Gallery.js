@@ -18,7 +18,7 @@ class Gallery extends Component {
         <div className="gallery-container">
           {items.map((article) => (
             <GalleryItem
-              key={article.id}
+              key={article._id}
               article={article}
               className="single-item"
             />

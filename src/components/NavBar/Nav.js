@@ -75,7 +75,7 @@ class Nav extends Component {
           </li>
           <li>
             <Link
-              to="dashboard"
+              to="/dashboard"
               className="link"
               onClick={this.handleClickLink}
             >

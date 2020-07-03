@@ -42,6 +42,25 @@
   color: rgb(160, 159, 159);
 }
 
+.desc-level {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 95%;
+}
+
+.desc-level p,
+.redflag p {
+  text-align: end;
+}
+
+.redflag {
+  color: red;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 95%;
+  font-weight: bold;
+}
+
 .infos-submit-botton {
   width: 200px;
   justify-self: center;

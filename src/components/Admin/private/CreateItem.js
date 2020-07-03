@@ -17,10 +17,18 @@ class CreateItem extends Component {
       responseData: "",
       responseStatus: "",
       popUpstate: false,
+      charactersNumber: 280,
     };
-
-    //this.fileInput = React.createRef();
   }
+
+  characterCompute = (e) => {
+    let descriptionLoc = this.state.description;
+    let descNumber = descriptionLoc.length;
+    let diff = 281 - descNumber;
+    this.setState({
+      charactersNumber: diff,
+    });
+  };
 
   onChangeItemName = (e) => {
     this.setState({
@@ -32,15 +40,23 @@ class CreateItem extends Component {
     this.setState({
       description: e.target.value,
     });
+    this.characterCompute();
   };
 
   onSubmit = (e) => {
     e.preventDefault();
 
+    let { itemName, description, date } = this.state;
+
+    itemName = itemName.trim();
+
+    description = description.trim();
+    description = description.substring(0, 279);
+
     const itemRedux = {
-      itemName: this.state.itemName,
-      description: this.state.description,
-      date: this.state.date,
+      itemName,
+      description,
+      date,
     };
 
     // Add item via addItem action
@@ -54,6 +70,7 @@ class CreateItem extends Component {
       itemName: "",
       description: "",
       date: new Date(),
+      charactersNumber: 280,
     });
   };
 
@@ -80,6 +97,7 @@ class CreateItem extends Component {
       this.setState({
         imageUploader: false,
       });
+      window.location = "/article/add";
     }
   };
 
@@ -89,8 +107,8 @@ class CreateItem extends Component {
     });
   };
 
-  //window.location = '/article/add';
   render() {
+    let descriptionFlag = "desc-level";
     let textInfosClasses = "product-infos-container";
     let imageContainer = "image-container hideUploader";
     let barImageBackgroundColorStyle = "rgb(236, 234, 234)";
@@ -100,6 +118,10 @@ class CreateItem extends Component {
       imageContainer = "image-container";
       barImageBackgroundColorStyle = "rgb(11, 161, 66)";
       step = 2;
+    }
+
+    if (this.state.charactersNumber < 0) {
+      descriptionFlag = "redflag";
     }
 
     let responseReceived = "";
@@ -163,7 +185,10 @@ class CreateItem extends Component {
                 />
               </div>
               <div className="form-group">
-                <label>Déscription:</label>
+                <div className={descriptionFlag}>
+                  <label>Déscription:</label>
+                  <p>{this.state.charactersNumber}</p>
+                </div>
                 <textarea
                   type="text"
                   name="articleDescription"
@@ -174,6 +199,7 @@ class CreateItem extends Component {
                   className="infos-text"
                 ></textarea>
               </div>
+
               <div className="form-group">
                 <input
                   type="submit"

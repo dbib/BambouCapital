@@ -22,7 +22,7 @@ class AdminGallery extends Component {
         <div className="admin-gal-container">
           {items.map((article) => (
             <AdminGalleryItem
-              key={article.id}
+              key={article._id}
               article={article}
               className="single-item"
               onDeleteClick={this.onDeleteClick}
