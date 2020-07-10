@@ -140,10 +140,16 @@
 
 .nav-bar-container {
   margin-bottom: 0px;
+  box-sizing: border-box;
 }
 
 .normal-hearder {
   display: none;
+}
+
+.nav-wrapper {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Large Tablets and Laptop */
@@ -174,6 +180,7 @@
     grid-column: 5/13;
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 
   .small-screen nav {

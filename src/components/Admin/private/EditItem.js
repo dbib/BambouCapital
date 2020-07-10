@@ -12,10 +12,20 @@ export default class EditItem extends Component {
       description: "",
       itemImage: "",
       date: new Date(),
+      charactersNumber: 280,
     };
 
     //this.fileInput = React.createRef();
   }
+
+  characterCompute = (e) => {
+    let descriptionLoc = this.state.description;
+    let descNumber = descriptionLoc.length;
+    let diff = 281 - descNumber;
+    this.setState({
+      charactersNumber: diff,
+    });
+  };
 
   onChangeItemName = (e) => {
     this.setState({
@@ -27,6 +37,8 @@ export default class EditItem extends Component {
     this.setState({
       description: e.target.value,
     });
+
+    this.characterCompute();
   };
 
   componentDidMount() {
@@ -55,10 +67,17 @@ export default class EditItem extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
+    let { itemName, description, date } = this.state;
+
+    itemName = itemName.trim();
+
+    description = description.trim();
+    description = description.substring(0, 279);
+
     const Item = {
-      itemName: this.state.itemName,
-      description: this.state.description,
-      date: this.state.date,
+      itemName,
+      description,
+      date,
     };
 
     //sending data to our backend
@@ -92,10 +111,14 @@ export default class EditItem extends Component {
       date: new Date(),
     });
 
-    window.location = "/admingallery";
+    window.location = "/gallery";
   };
 
   render() {
+    let descriptionFlag = "desc-level";
+    if (this.state.charactersNumber < 0) {
+      descriptionFlag = "redflag";
+    }
     return (
       <div className="edit-item">
         <div className="edit-item-root">
@@ -118,14 +141,18 @@ export default class EditItem extends Component {
                 />
               </div>
               <div className="edit-form-group">
-                <label>Description:</label>
+                <div className={descriptionFlag}>
+                  <label>Déscription:</label>
+                  <p>{this.state.charactersNumber}</p>
+                </div>
                 <textarea
                   type="text"
                   name="articleDescription"
                   required
+                  placeholder="décrivez un peu l'article que vous voulez ajouter"
                   value={this.state.description}
                   onChange={this.onChangeDescription}
-                  className="edit-infos-text"
+                  className="infos-text"
                 ></textarea>
               </div>
               <div className="edit-form-group file">

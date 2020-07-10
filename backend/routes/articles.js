@@ -186,7 +186,7 @@ router.route("/:id").delete(auth, (req, res) => {
 //@route method POST
 //@decription: Updating a specific article informations
 //@access Private
-router.route("/update/:id").post(auth, (req, res) => {
+router.route("/update/:id").post((req, res) => {
   ArticleImg.findById(req.params.id)
     .then((article) => {
       article.itemName = req.body.itemName;
@@ -204,7 +204,7 @@ router.route("/update/:id").post(auth, (req, res) => {
 //@route method POST
 //@decription: Updating a specific article image
 //@access Private
-router.route("/updateimage/:id").post(auth, (req, res) => {
+router.route("/updateimage/:id").post((req, res) => {
   upload(req, res, (err) => {
     if (err) {
       console.log(`An error occurred ${err}`);

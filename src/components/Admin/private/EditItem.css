@@ -62,6 +62,25 @@
   height: 100px;
 }
 
+.desc-level {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 95%;
+}
+
+.desc-level p,
+.redflag p {
+  text-align: end;
+}
+
+.redflag {
+  color: red;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 95%;
+  font-weight: bold;
+}
+
 @media screen and (min-width: 620px) {
   .edit-item {
     background-color: rgb(248, 255, 255);

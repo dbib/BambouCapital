@@ -97,7 +97,7 @@ class CreateItem extends Component {
       this.setState({
         imageUploader: false,
       });
-      window.location = "/article/add";
+      //window.location = "/article/add";
     }
   };
 
