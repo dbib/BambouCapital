@@ -33,6 +33,9 @@ class AdminMain extends Component {
             <Link to="/gallery" className="admin-func violet">
               Gerer les articles
             </Link>
+            <Link to="/adminregister" className="admin-func green">
+              Ajouter un administrateur
+            </Link>
           </div>
         </div>
       </div>

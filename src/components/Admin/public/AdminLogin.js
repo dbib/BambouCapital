@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import loginpage from "../../../assets/loginundraw.svg";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { login } from "../../../actions/authActions";
 import { connect } from "react-redux";
@@ -53,6 +53,11 @@ class AdminLogin extends Component {
     });
   };
 
+  onClearError = () => {
+    // Clear errors
+    this.props.clearErrors();
+  };
+
   onSubmit = (e) => {
     e.preventDefault();
 
@@ -68,6 +73,17 @@ class AdminLogin extends Component {
     return (
       <div className="login-container">
         <div className="admin-login-container">
+          {this.state.msg ? (
+            <div className="error-message-login">
+              <p className="error-message-text-cont-login">{this.state.msg}</p>
+              <p
+                className="close-error-pop-up-login"
+                onClick={this.onClearError}
+              >
+                fermer
+              </p>
+            </div>
+          ) : null}
           <div className="login-text-container">
             <p>
               Connectez vous entant qu'administrateur pour ajouter ou modilfier
@@ -110,9 +126,6 @@ class AdminLogin extends Component {
                   name="connect-admin"
                   className="admin-connect-botton"
                 />
-                <Link to="/adminresetpass" className="login-forget-pass">
-                  Mot de passe oublier
-                </Link>
               </div>
             </form>
           </div>

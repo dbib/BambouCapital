@@ -17,10 +17,19 @@ export default class extends Component {
             >
               <img src={twitter} alt="twitter icon" />
             </a>
-            <a href="instagram.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/bambou_capital1/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={instagram} alt="twitter icon" />
             </a>
-            <a href="facebook.com" target="_blank" rel="noopener noreferrer">
+
+            <a
+              href="https://web.facebook.com/Bambous-Capital-108667837258811/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={facebook} alt="twitter icon" />
             </a>
           </div>

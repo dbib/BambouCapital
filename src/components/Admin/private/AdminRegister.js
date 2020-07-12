@@ -78,11 +78,20 @@ class AdminRegister extends Component {
 
     //Attempt to register
     this.props.register(newUser);
+
+    // Clear the State
+    this.setState({
+      pseudo: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+      date: new Date(),
+    });
   };
 
   // Handling Errors
   componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props;
+    const { error } = this.props;
     if (error !== prevProps.error) {
       //Check for register error
       if (error.id === "REGISTER_FAIL") {
@@ -90,10 +99,6 @@ class AdminRegister extends Component {
       } else {
         this.setState({ msg: null });
       }
-    }
-
-    if (isAuthenticated) {
-      //this.setState({ msg: "new user added " });
     }
   }
 
@@ -108,9 +113,7 @@ class AdminRegister extends Component {
             </p>
           </div>
         ) : null}
-        <div className="admin-root-text-cont">
-          <p>veillez completer seulement les champs que vous voulez modifier</p>
-        </div>
+
         <div className="admin-root-form">
           <form onSubmit={this.onSubmit} encType="multipart/form-data">
             <div className="admin-root-form-group">
@@ -118,7 +121,7 @@ class AdminRegister extends Component {
               <input
                 type="text"
                 name="pseudo"
-                placeholder="moise002"
+                placeholder="ex: elon2003"
                 value={this.state.pseudo}
                 onChange={this.onChangePseudo}
                 className="admin-reset-infos"
@@ -127,7 +130,7 @@ class AdminRegister extends Component {
               <input
                 type="email"
                 name="email"
-                placeholder="jeanLuc01@gmail.com"
+                placeholder="ex: jeanLuc01@gmail.com"
                 value={this.state.email}
                 onChange={this.onChangeEmail}
                 className="admin-reset-infos"

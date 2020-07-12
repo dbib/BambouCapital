@@ -12,14 +12,22 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1em;
+  width: 300px;
+  margin: 0 auto;
 }
 
 .initial {
   padding: 0px 0px 30px 0px;
 }
 
-.checkbox-option {
-  padding: 20px 0px;
+.admin-root-form {
+  padding-top: 20px;
+}
+.admin-root-form-group input,
+.initial input {
+  height: 30px;
+  border-radius: 3px;
+  padding: 5px;
 }
 
 .admin-root-botton {
@@ -56,4 +64,21 @@
   grid-column: 6/7;
   padding: 5px;
   text-align: center;
+}
+
+@media screen and (min-width: 620px) {
+  .admin-root-settings-cont {
+    background-color: rgb(248, 255, 255);
+    padding-top: 20px;
+    min-height: 95vh;
+  }
+
+  .admin-root-form {
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.4);
+    max-width: 320px;
+    height: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+  }
 }

@@ -10,8 +10,6 @@ import CreateItem from "./components/Admin/private/CreateItem";
 import EditItem from "./components/Admin/private/EditItem";
 import AdminLogin from "./components/Admin/public/AdminLogin";
 import AdminMain from "./components/Admin/private/AdminMain";
-import AdminResetPass from "./components/Admin/public/AdminResetPass";
-import AdminRootSettings from "./components/Admin/private/AdminRootSettings";
 import AdminRegister from "./components/Admin/private/AdminRegister";
 import GalleryHandler from "./components/Gallery/GalleryHandler";
 
@@ -50,15 +48,10 @@ export default class App extends Component {
             />
             <Route path="/design" component={Design} />
             <Route path="/admin" component={AdminLogin} />
-            <Route path="/adminresetpass" component={AdminResetPass} />
 
             <PrivateRoute path="/article/add" component={CreateItem} />
             <PrivateRoute path="/article/edit/:id" component={EditItem} />
             <PrivateRoute path="/dashboard" component={AdminMain} />
-            <PrivateRoute
-              path="/adminrootsettings"
-              component={AdminRootSettings}
-            />
             <PrivateRoute path="/adminregister" component={AdminRegister} />
             <Footer />
           </div>
