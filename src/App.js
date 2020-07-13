@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 
 import Nav from "./components/NavBar/Nav";
@@ -12,6 +12,7 @@ import AdminLogin from "./components/Admin/public/AdminLogin";
 import AdminMain from "./components/Admin/private/AdminMain";
 import AdminRegister from "./components/Admin/private/AdminRegister";
 import GalleryHandler from "./components/Gallery/GalleryHandler";
+import NoMuchPage from "./components/Admin/public/NoMuchPage";
 
 import "./App.css";
 import { Provider } from "react-redux";
@@ -29,30 +30,37 @@ export default class App extends Component {
         <Provider store={store}>
           <div className="App">
             <Nav />
-            <Route
-              exact
-              path="/"
-              render={(props) => (
-                <React.Fragment>
-                  <Home />
-                </React.Fragment>
-              )}
-            />
-            <Route
-              path="/gallery"
-              render={(props) => (
-                <React.Fragment>
-                  <GalleryHandler />
-                </React.Fragment>
-              )}
-            />
-            <Route path="/design" component={Design} />
-            <Route path="/admin" component={AdminLogin} />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={(props) => (
+                  <React.Fragment>
+                    <Home />
+                  </React.Fragment>
+                )}
+              />
+              <Route
+                path="/gallery"
+                render={(props) => (
+                  <React.Fragment>
+                    <GalleryHandler />
+                  </React.Fragment>
+                )}
+              />
+              <Route path="/design" component={Design} />
+              <Route path="/admin" component={AdminLogin} />
 
-            <PrivateRoute path="/article/add" component={CreateItem} />
-            <PrivateRoute path="/article/edit/:id" component={EditItem} />
-            <PrivateRoute path="/dashboard" component={AdminMain} />
-            <PrivateRoute path="/adminregister" component={AdminRegister} />
+              <PrivateRoute path="/article/add" component={CreateItem} />
+              <PrivateRoute path="/article/edit/:id" component={EditItem} />
+              <PrivateRoute path="/dashboard" component={AdminMain} />
+              <PrivateRoute
+                exact
+                path="/adminregister"
+                component={AdminRegister}
+              />
+              <Route component={NoMuchPage} />
+            </Switch>
             <Footer />
           </div>
         </Provider>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import loginpage from "../../../assets/loginundraw.svg";
-import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { login } from "../../../actions/authActions";
 import { connect } from "react-redux";
