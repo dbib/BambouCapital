@@ -54,11 +54,7 @@ export default class App extends Component {
               <PrivateRoute path="/article/add" component={CreateItem} />
               <PrivateRoute path="/article/edit/:id" component={EditItem} />
               <PrivateRoute path="/dashboard" component={AdminMain} />
-              <PrivateRoute
-                exact
-                path="/adminregister"
-                component={AdminRegister}
-              />
+              <Route exact path="/adminregister" component={AdminRegister} />
               <Route component={NoMuchPage} />
             </Switch>
             <Footer />
